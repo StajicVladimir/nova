@@ -4,6 +4,8 @@ import{RouteConfig} from 'angular2/router';
 import {WelcomeScreenComponent} from './welcome-screen.component';
 import {LoginComponent} from './login.component';
 import {HistoryComponent} from './history.component';
+import {TermListComponent} from './term/term-list.component';
+import {TermDetailsComponent} from './term/term-details.component';
 
 
 @Component({
@@ -15,6 +17,7 @@ import {HistoryComponent} from './history.component';
 				<a [routerLink] = "['Login']" style ="float:right">Login</a>
 				<a [routerLink] = "['Welcome']">Main Screen</a>
 				<a [routerLink] = "['History']">History</a>
+				<a [routerLink] = "['Terms']">Terms</a>
 			</nav>
 		</header>
 		<div>
@@ -26,9 +29,11 @@ import {HistoryComponent} from './history.component';
 })
 
 @RouteConfig([
-	{path :'/welcome', name: 'Welcome', component: WelcomeScreenComponent, useAsDefault: true},
-	{path :'/login', name: 'Login', component: LoginComponent},
-	{path : '/History', name: 'History', component: HistoryComponent}
+	{path :'/welcome', name: 'Welcome', component: WelcomeScreenComponent},
+	{path :'/login', name: 'Login', component: LoginComponent, useAsDefault: true},
+	{path : '/History', name: 'History', component: HistoryComponent},
+	{path : '/Terms', name: 'Terms', component: TermListComponent},
+	{path : '/TermDetails', name: 'TermDetails', component: TermDetailsComponent}
 ])
 export class AppComponent
 {
