@@ -6,7 +6,7 @@ import {Student} from './student';
     selector: 'welcome',
     template: `
        
-        <h3> Dobrodosli na vas glavni ekran :) <br>vasa lozinka je: {{student.pass}}</h3>
+        <h3> Welcome {{student.name}}!!! :) <br>vasa lozinka je: {{student.pass}}</h3>
         
     `
 })
@@ -15,8 +15,8 @@ export class WelcomeScreenComponent implements OnInit{
     student: Student;
     ngOnInit():any{
         //this.pass = this._routeParams.get("pass");
-        this.student = {name : 'Neko ime',pass : this._routeParams.get("pass")}//pass = this._routeParams.get("pass");
-        this.pass = "aaa";
+        this.student = {name : this._routeParams.get("name"),pass : this._routeParams.get("pass")}//pass = this._routeParams.get("pass");
+        
     }
     constructor(private _router:Router, private _routeParams: RouteParams){}
 }

@@ -24,7 +24,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 ExamDetailsComponent = __decorate([
                     core_1.Component({
                         selector: 'exam-details',
-                        template: "\n        <div style=\"border-radius: 25px; background: #eee; border: 2px solid #369; padding: 20px; display: inline-block\" >\n            ispit: {{exam.subject}}<br>\n            datum: {{exam.date}}\n            \n        </div>\n        \n    ",
+                        template: "\n        <div style=\"border-radius: 10px; background: #eee; border: 2px solid #369; padding: 20px; display: inline-block\" >\n            ispit: {{exam.subject}}<br>\n            datum: {{exam.date}}\n            \n        </div>\n        \n    ",
                         inputs: ["exam"]
                     }), 
                     __metadata('design:paramtypes', [])

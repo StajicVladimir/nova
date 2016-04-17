@@ -11,20 +11,27 @@ import {TermDetailsComponent} from './term/term-details.component';
 @Component({
 	selector: 'my-app',
 	template: `
-		<h1>Prijava ispita early days!</h1>
+		<h2>Prijava ispita early days!</h2>
 		<header>
-			<nav>
+			<nav style="margin:0px 50px 25px 50px;">
 				<a [routerLink] = "['Login']" style ="float:right">Login</a>
 				<a [routerLink] = "['Welcome']">Main Screen</a>
 				<a [routerLink] = "['History']">History</a>
 				<a [routerLink] = "['Terms']">Terms</a>
 			</nav>
 		</header>
-		<div>
+		<div style="margin:0px 50px 0px 50px;">
 			
 			<router-outlet></router-outlet>
 		</div>
 		`,
+		styles:[`
+			h2 {
+				color :#369;
+				
+			}
+		`],
+		
 	directives: [ROUTER_DIRECTIVES]
 })
 

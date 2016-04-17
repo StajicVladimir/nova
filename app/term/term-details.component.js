@@ -37,12 +37,12 @@ System.register(['angular2/core', 'angular2/router', '../exam/exam-list.componen
                     //pass = this._routeParams.get("pass");
                 };
                 TermDetailsComponent.prototype.onBackToTermList = function () {
-                    //this._router.navigate(['Terms']);
+                    this._router.navigate(['Terms']);
                 };
                 TermDetailsComponent = __decorate([
                     core_1.Component({
                         selector: 'term-details',
-                        template: "\n        <h2>Details for term from {{datum}}</h2> \n        <exam-list><exam-list>\n        <button (click)= \"onBackToTermList()\">Back to Term list</button>\n    ",
+                        template: "\n        <h3>Details for term from: {{datum}}</h3> \n        <button (click) = \"onBackToTermList()\">Back to terms</button>\n            <exam-list><exam-list>\n        \n    ",
                         directives: [exam_list_component_1.ExamListComponent]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])

@@ -7,9 +7,10 @@ import {ExamListComponent} from '../exam/exam-list.component';
 @Component({
     selector:'term-details',
     template: `
-        <h2>Details for term from {{datum}}</h2> 
-        <exam-list><exam-list>
-        <button (click)= "onBackToTermList()">Back to Term list</button>
+        <h3>Details for term from: {{datum}}</h3> 
+        <button (click) = "onBackToTermList()">Back to terms</button>
+            <exam-list><exam-list>
+        
     `,
     directives:[ExamListComponent]
 })
@@ -30,6 +31,6 @@ ngOnInit():any{
         
     }
     onBackToTermList(){
-        //this._router.navigate(['Terms']);
+        this._router.navigate(['Terms']);
     }
 }

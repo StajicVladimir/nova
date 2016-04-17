@@ -28,13 +28,12 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 }
                 WelcomeScreenComponent.prototype.ngOnInit = function () {
                     //this.pass = this._routeParams.get("pass");
-                    this.student = { name: 'Neko ime', pass: this._routeParams.get("pass") }; //pass = this._routeParams.get("pass");
-                    this.pass = "aaa";
+                    this.student = { name: this._routeParams.get("name"), pass: this._routeParams.get("pass") }; //pass = this._routeParams.get("pass");
                 };
                 WelcomeScreenComponent = __decorate([
                     core_1.Component({
                         selector: 'welcome',
-                        template: "\n       \n        <h3> Dobrodosli na vas glavni ekran :) <br>vasa lozinka je: {{student.pass}}</h3>\n        \n    "
+                        template: "\n       \n        <h3> Welcome {{student.name}}!!! :) <br>vasa lozinka je: {{student.pass}}</h3>\n        \n    "
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])
                 ], WelcomeScreenComponent);

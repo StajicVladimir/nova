@@ -43,7 +43,8 @@ System.register(['angular2/core', 'angular2/router', './welcome-screen.component
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n\t\t<h1>Prijava ispita early days!</h1>\n\t\t<header>\n\t\t\t<nav>\n\t\t\t\t<a [routerLink] = \"['Login']\" style =\"float:right\">Login</a>\n\t\t\t\t<a [routerLink] = \"['Welcome']\">Main Screen</a>\n\t\t\t\t<a [routerLink] = \"['History']\">History</a>\n\t\t\t\t<a [routerLink] = \"['Terms']\">Terms</a>\n\t\t\t</nav>\n\t\t</header>\n\t\t<div>\n\t\t\t\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t\t",
+                        template: "\n\t\t<h2>Prijava ispita early days!</h2>\n\t\t<header>\n\t\t\t<nav style=\"margin:0px 50px 25px 50px;\">\n\t\t\t\t<a [routerLink] = \"['Login']\" style =\"float:right\">Login</a>\n\t\t\t\t<a [routerLink] = \"['Welcome']\">Main Screen</a>\n\t\t\t\t<a [routerLink] = \"['History']\">History</a>\n\t\t\t\t<a [routerLink] = \"['Terms']\">Terms</a>\n\t\t\t</nav>\n\t\t</header>\n\t\t<div style=\"margin:0px 50px 0px 50px;\">\n\t\t\t\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t\t",
+                        styles: ["\n\t\t\th2 {\n\t\t\t\tcolor :#369;\n\t\t\t}\n\t\t"],
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_2.RouteConfig([
