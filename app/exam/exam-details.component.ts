@@ -5,8 +5,8 @@ import {Exam} from './exam';
     selector: 'exam-details',
     template:`
         <div style="border-radius: 10px; background: #eee; border: 2px solid #369; padding: 20px; display: inline-block" >
-            ispit: {{exam.subject}}<br>
-            datum: {{exam.date}}
+            ispit: {{exam.name}}<br>
+            datum: {{exam.id}}
             
         </div>
         

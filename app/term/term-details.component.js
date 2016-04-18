@@ -33,7 +33,7 @@ System.register(['angular2/core', 'angular2/router', '../exam/exam-list.componen
                     //this.pass = this._routeParams.get("pass");
                     //this.term = {date : this._routeParams.get("date"),pass : this._routeParams.get("pass")};
                     this.datum = this._routeParams.get("date");
-                    this.datum = this.datum.substring(0, 10);
+                    // this.datum = this.datum.substring(0,10);
                     //pass = this._routeParams.get("pass");
                 };
                 TermDetailsComponent.prototype.onBackToTermList = function () {

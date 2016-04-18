@@ -1,5 +1,6 @@
 export class Exam{
-    subject: string;
-    date: string;
+    id: number;
+    name: string;
+    
     
 }

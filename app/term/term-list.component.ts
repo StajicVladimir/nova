@@ -11,7 +11,7 @@ import {Router, RouteParams} from 'angular2/router';
        <ul >
             <li *ngFor ="#term of terms"
             (click) = "onSelectTerm(term)">
-                {{term.date | date: 'mediumDate'}}
+                {{term.date}}
                 
                 
             </li>
@@ -50,15 +50,19 @@ export class TermListComponent implements OnInit {
     
     constructor(private _termService: TermService, private _router: Router, private _routeParams: RouteParams){}
     public getTerms(){
-        this._termService.getTerms().then((terms: Term[]) => this.terms = terms);
-        
+       // this._termService.getTerms().then((terms: Term[]) => this.terms = terms);
+         this._termService.getTerms().subscribe(
+      data => { this.terms = data},
+      err => console.error(err),
+      () => console.log('done loading foods')
+    );
     }
     ngOnInit(): any{
         this.getTerms();
     }
     onSelectTerm(term){
         this.selectedTerm=term;
-        this._router.navigate(['TermDetails',{date: this.selectedTerm.date.toISOString(), pass: this.selectedTerm.pass}]);
+        this._router.navigate(['TermDetails',{date: this.selectedTerm.date}]);
     }
     
     /*public exams = [];

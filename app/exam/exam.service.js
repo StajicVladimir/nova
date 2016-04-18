@@ -1,4 +1,4 @@
-System.register(['angular2/core', './mock-exams'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,26 +10,28 @@ System.register(['angular2/core', './mock-exams'], function(exports_1, context_1
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, mock_exams_1;
+    var core_1, http_1;
     var ExamService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (mock_exams_1_1) {
-                mock_exams_1 = mock_exams_1_1;
+            function (http_1_1) {
+                http_1 = http_1_1;
             }],
         execute: function() {
             ExamService = (function () {
-                function ExamService() {
+                function ExamService(_http) {
+                    this._http = _http;
                 }
                 ExamService.prototype.getExams = function () {
-                    return Promise.resolve(mock_exams_1.EXAMS);
+                    //return Promise.resolve(EXAMS);
+                    return this._http.get('http://localhost:8080/RESTfulProject/REST/WebService/GetFeeds').map(function (res) { return res.json(); });
                 };
                 ExamService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], ExamService);
                 return ExamService;
             }());

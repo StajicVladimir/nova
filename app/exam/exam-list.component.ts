@@ -10,7 +10,7 @@ import {ExamDetailsComponent} from './exam-details.component'
        <ul >
             <li *ngFor ="#exam of exams"
             (click) = "onSelectExam(exam)">
-                {{exam.subject}}
+                {{exam.name}}
                 
                 
             </li>
@@ -47,13 +47,22 @@ li:hover{
     
 })
 export class ExamListComponent implements OnInit {
-    public exams = [];
+    public exams :Exam[];
     public selectedExam: Exam=null;
     public date: Date;
     
     constructor(private _examService: ExamService){}
+    
     public getExams(){
-        this._examService.getExams().then((exams: Exam[]) => this.exams = exams);
+       //this._examService.getExams().then((exams: Exam[]) => this.exams = exams);
+        this._examService.getExams().subscribe(
+      // the first argument is a function which runs on success
+      data => { this.exams = data},
+      // the second argument is a function which runs on error
+      err => console.error(err),
+      // the third argument is a function which runs on completion
+      () => console.log('done loading foods')
+    );
     }
     onSelectExam(exam){
         this.selectedExam = exam;
