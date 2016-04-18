@@ -4,6 +4,8 @@ import {FormBuilder} from 'angular2/common';
 import {Validators} from 'angular2/common';
 import {Student} from './student';
 import {Router, RouteParams} from 'angular2/router';
+import {GlobalVarsService} from './global-vars.service';
+
 
 
 
@@ -41,6 +43,7 @@ import {Router, RouteParams} from 'angular2/router';
             <div>
                 <button (click) = "onLogin()" [disabled] = "!myForm.valid" >login</button>
             </div>
+            
         </form>
             
     `,
@@ -66,6 +69,7 @@ import {Router, RouteParams} from 'angular2/router';
 export class LoginComponent {
     myForm :ControlGroup;
     student: Student = {name: "", pass:""};
+    
     ngOnInit():any{
        //this.newContact = {firstName: '',lastName: this._routeParams.get('lastName'), phone:'', email: ''};
       /* this.myForm = this._formBuilder.group({
@@ -73,12 +77,17 @@ export class LoginComponent {
            'pass': ['',Validators.required],
            
        })*/
+      
     }
     
-    constructor(private _formBuilder: FormBuilder,private _router:Router, private _routeParams: RouteParams){}
-   // ngOnOinit(){}
+    constructor(private _gVS: GlobalVarsService, private _formBuilder: FormBuilder,
+            private _router:Router, private _routeParams: RouteParams){}
+   
    onLogin(){
+       this._gVS.setLoggedIn(true);
        this._router.navigate(['Welcome',{name: this.student.name, pass: this.student.pass}]);
+      // this._globals.setLoggedIn(true);
+      
    }
    onSubmit(){}
 }

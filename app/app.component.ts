@@ -6,6 +6,7 @@ import {LoginComponent} from './login.component';
 import {HistoryComponent} from './history.component';
 import {TermListComponent} from './term/term-list.component';
 import {TermDetailsComponent} from './term/term-details.component';
+import {GlobalVarsService} from './global-vars.service';
 
 
 @Component({
@@ -15,11 +16,12 @@ import {TermDetailsComponent} from './term/term-details.component';
 		<header>
 			<nav style="margin:0px 50px 25px 50px;">
 				<a [routerLink] = "['Login']" style ="float:right">Login</a>
-				<a [routerLink] = "['Welcome']">Main Screen</a>
-				<a [routerLink] = "['History']">History</a>
-				<a [routerLink] = "['Terms']">Terms</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Main Screen</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Terms</a>
 			</nav>
 		</header>
+		{{_gVS.getLoggedIn()}}
 		<div style="margin:0px 50px 0px 50px;">
 			
 			<router-outlet></router-outlet>
@@ -30,9 +32,16 @@ import {TermDetailsComponent} from './term/term-details.component';
 				color :#369;
 				
 			}
+			a.disabled {
+   				pointer-events: none;
+				background-color: #eee;
+ 			    color: #aaa;
+   				cursor: default;
+			}
 		`],
 		
-	directives: [ROUTER_DIRECTIVES]
+	directives: [ROUTER_DIRECTIVES],
+	providers: [GlobalVarsService]
 })
 
 @RouteConfig([
@@ -43,8 +52,12 @@ import {TermDetailsComponent} from './term/term-details.component';
 	{path : '/TermDetails', name: 'TermDetails', component: TermDetailsComponent}
 ])
 export class AppComponent
-{
-
+{	
+	loggedIn: boolean;
+	constructor (private _gVS : GlobalVarsService){
+		this.loggedIn = _gVS.getLoggedIn();
+	}
+	
  }
 
 /*
