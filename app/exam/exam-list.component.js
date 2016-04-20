@@ -50,7 +50,7 @@ System.register(['angular2/core', './exam.service', './exam-details.component'],
                 ExamListComponent = __decorate([
                     core_1.Component({
                         selector: 'exam-list',
-                        template: "\n       <div> Hello from exam list</div>\n       <ul >\n            <li *ngFor =\"#exam of exams\"\n            (click) = \"onSelectExam(exam)\">\n                {{exam.name}}\n                \n                \n            </li>\n       </ul>\n      <exam-details *ngIf = \"selectedExam !== null\" [exam] = \"selectedExam\"></exam-details>\n     \n      {{date | date: 'mediumDate'}}\n    ",
+                        template: "\n       <div> Hello from exam list</div>\n        <div style=\"width : 400px; display: inline-block\">\n       <ul >\n            <li *ngFor =\"#exam of exams\"\n            (click) = \"onSelectExam(exam)\">\n                {{exam.name}}\n                \n                \n            </li>\n       </ul>\n       </div>\n      <exam-details *ngIf = \"selectedExam !== null\" [exam] = \"selectedExam\"></exam-details>\n     \n      {{date | date: 'mediumDate'}}\n    ",
                         styles: ["\n        ul{\n    list-style: none;\n    margin: 16px;\n    padding: 0;\n}\n\nli{\n    cursor: pointer;\n    transition: padding 0.3s;\n}\n\nli:hover{\n    padding-left: 8px;\n    color: #369;\n    font-weight: bold;\n    border-left: 3px solid #369;\n}\n.clicked{\n    color: #369;\n    font-weight: bold;\n}\n    "],
                         directives: [exam_details_component_1.ExamDetailsComponent],
                         providers: [exam_service_1.ExamService]

@@ -41,14 +41,19 @@ System.register(['angular2/core', 'angular2/router', './welcome-screen.component
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(_gVS) {
+                function AppComponent(_gVS, _router) {
                     this._gVS = _gVS;
+                    this._router = _router;
                     this.loggedIn = _gVS.getLoggedIn();
                 }
+                AppComponent.prototype.onLogout = function () {
+                    this._gVS.setLoggedIn(false);
+                    //this._router.navigate(['login'])
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n\t\t<h2>Prijava ispita early days!</h2>\n\t\t<header>\n\t\t\t<nav style=\"margin:0px 50px 25px 50px;\">\n\t\t\t\t<a [routerLink] = \"['Login']\" style =\"float:right\">Login</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['Welcome']\">Main Screen</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['History']\">History</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['Terms']\">Terms</a>\n\t\t\t</nav>\n\t\t</header>\n\t\t{{_gVS.getLoggedIn()}}{{_gVS.getStudentId()}}\n\t\t<div style=\"margin:0px 50px 0px 50px;\">\n\t\t\t\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t\t",
+                        template: "\n\t\t<h2>Prijava ispita early days!</h2>\n\t\t<header>\n\t\t\t<nav style=\"margin:0px 50px 25px 50px;\">\n\t\t\t\t<a [class.disabled]=\"_gVS.getLoggedIn()\"[routerLink] = \"['Login']\" style =\"float:right\">Login</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" style =\"float:right\" \n\t\t\t\t\t(click)=\"onLogout()\">Logout</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['Welcome']\">Main Screen</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['History']\">History</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['Terms']\">Terms</a>\n\t\t\t</nav>\n\t\t</header>\n\t\t{{_gVS.getLoggedIn()}}{{_gVS.getStudentId()}}\n\t\t<div style=\"margin:0px 50px 0px 50px;\">\n\t\t\t\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t\t",
                         styles: ["\n\t\t\th2 {\n\t\t\t\tcolor :#369;\n\t\t\t\t\n\t\t\t}\n\t\t\ta.disabled {\n   \t\t\t\tpointer-events: none;\n\t\t\t\tbackground-color: #eee;\n \t\t\t    color: #aaa;\n   \t\t\t\tcursor: default;\n\t\t\t}\n\t\t"],
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [global_vars_service_1.GlobalVarsService]
@@ -60,7 +65,7 @@ System.register(['angular2/core', 'angular2/router', './welcome-screen.component
                         { path: '/Terms', name: 'Terms', component: term_list_component_1.TermListComponent },
                         { path: '/TermDetails', name: 'TermDetails', component: term_details_component_1.TermDetailsComponent }
                     ]), 
-                    __metadata('design:paramtypes', [global_vars_service_1.GlobalVarsService])
+                    __metadata('design:paramtypes', [global_vars_service_1.GlobalVarsService, router_1.Router])
                 ], AppComponent);
                 return AppComponent;
             }());

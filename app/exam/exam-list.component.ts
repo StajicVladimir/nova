@@ -7,6 +7,7 @@ import {ExamDetailsComponent} from './exam-details.component'
     selector: 'exam-list',
     template:`
        <div> Hello from exam list</div>
+        <div style="width : 400px; display: inline-block">
        <ul >
             <li *ngFor ="#exam of exams"
             (click) = "onSelectExam(exam)">
@@ -15,6 +16,7 @@ import {ExamDetailsComponent} from './exam-details.component'
                 
             </li>
        </ul>
+       </div>
       <exam-details *ngIf = "selectedExam !== null" [exam] = "selectedExam"></exam-details>
      
       {{date | date: 'mediumDate'}}

@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {ROUTER_DIRECTIVES,Router} from 'angular2/router';
 import{RouteConfig} from 'angular2/router';
 import {WelcomeScreenComponent} from './welcome-screen.component';
 import {LoginComponent} from './login.component';
@@ -15,7 +15,9 @@ import {GlobalVarsService} from './global-vars.service';
 		<h2>Prijava ispita early days!</h2>
 		<header>
 			<nav style="margin:0px 50px 25px 50px;">
-				<a [routerLink] = "['Login']" style ="float:right">Login</a>
+				<a [class.disabled]="_gVS.getLoggedIn()"[routerLink] = "['Login']" style ="float:right">Login</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" style ="float:right" 
+					(click)="onLogout()">Logout</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Main Screen</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Terms</a>
@@ -54,8 +56,12 @@ import {GlobalVarsService} from './global-vars.service';
 export class AppComponent
 {	
 	loggedIn: boolean;
-	constructor (private _gVS : GlobalVarsService){
+	constructor (private _gVS : GlobalVarsService, private _router:Router){
 		this.loggedIn = _gVS.getLoggedIn();
+	}
+	public onLogout(){
+		this._gVS.setLoggedIn(false);
+		//this._router.navigate(['login'])
 	}
 	
  }

@@ -28,30 +28,27 @@ System.register(['angular2/core', './student.service', '../global-vars.service']
                 function StudentDetailsComponent(_studentService, _gVS) {
                     this._studentService = _studentService;
                     this._gVS = _gVS;
+                    this.trenutniStudent = { id: 2, ime: "dfds", prezime: "heeeeee", godinaStudija: 4, odsek: 5, kredit: 3 };
                 }
                 StudentDetailsComponent.prototype.getStud = function () {
                     var _this = this;
-                    this._studentService.getStudents().subscribe(function (data) { _this.students = data; }, function (err) { return console.error(err); }, function () { return console.log('done loading students'); });
+                    this._studentService.getStudent().subscribe(function (data) { _this.trenutniStudent = data; }, function (err) { return console.error(err); }, function () { return console.log('done loading students'); });
+                    //this.students[1].ime= "noooooo";
+                    //this.duzina = this.students.length;
+                    /* this.jedan = {id:this.students[0].id, ime:this.students[0].ime,
+                                      prezime: this.students[0].prezime, godinaStudija: this.students[0].godinaStudija,
+                                      odsek: this.students[0].odsek, kredit: this.students[0].kredit};*/
                 };
-                /*public getStudents(){
-                   
-                    this._examService.getStudents().subscribe(
-                  // the first argument is a function which runs on success
-                  data => { this.students = data},
-                  // the second argument is a function which runs on error
-                  err => console.error(err),
-                  // the third argument is a function which runs on completion
-                  () => console.log('done loading foods')
-                    );
-                }
-                */
                 StudentDetailsComponent.prototype.ngOnInit = function () {
                     this.getStud();
+                    //this.jedan = this.students.pop();
+                    //this.duzina = this.students.length;
+                    //this.jedan = this.students[3];
                 };
                 StudentDetailsComponent = __decorate([
                     core_1.Component({
                         selector: 'student-details',
-                        template: "\n            <h3>Hello From student details </h3>\n            <ul>\n                <li *ngFor = \"#student of students\">\n                    {{student.ime}}\n                </li>\n           </ul>\n            \n                \n    ",
+                        template: "\n            \n            <h3>Hello From student details </h3>\n            \n           Ime i prezime: {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>\n           Na odseku: {{trenutniStudent.odsek}}<br>\n           Godina: {{trenutniStudent.godinaStudija}}<br>\n           Uplaceno: {{trenutniStudent.kredit}}rsd\n           \n           \n           \n                \n    ",
                         providers: [student_service_1.StudentService]
                     }), 
                     __metadata('design:paramtypes', [student_service_1.StudentService, global_vars_service_1.GlobalVarsService])
