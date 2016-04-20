@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,38 +10,33 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var GlobalVarsService;
+    var core_1, http_1;
+    var StudentService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (http_1_1) {
+                http_1 = http_1_1;
             }],
         execute: function() {
-            GlobalVarsService = (function () {
-                function GlobalVarsService() {
-                    this.loggedIn = false;
+            StudentService = (function () {
+                function StudentService(_http) {
+                    this._http = _http;
                 }
-                GlobalVarsService.prototype.getLoggedIn = function () {
-                    return this.loggedIn;
+                StudentService.prototype.getStudents = function () {
+                    return this._http.get('http://localhost:8080/RESTfulProject/REST/WebService/Students')
+                        .map(function (res) { return res.json(); });
                 };
-                GlobalVarsService.prototype.setLoggedIn = function (val) {
-                    this.loggedIn = val;
-                };
-                GlobalVarsService.prototype.getStudentId = function () {
-                    return this.studentId;
-                };
-                GlobalVarsService.prototype.setStudentId = function (id) {
-                    this.studentId = id;
-                };
-                GlobalVarsService = __decorate([
+                StudentService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], GlobalVarsService);
-                return GlobalVarsService;
+                    __metadata('design:paramtypes', [http_1.Http])
+                ], StudentService);
+                return StudentService;
             }());
-            exports_1("GlobalVarsService", GlobalVarsService);
+            exports_1("StudentService", StudentService);
         }
     }
 });
-//# sourceMappingURL=global-vars.service.js.map
+//# sourceMappingURL=student.service.js.map

@@ -27,7 +27,8 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 }
                 ExamService.prototype.getExams = function () {
                     //return Promise.resolve(EXAMS);
-                    return this._http.get('http://localhost:8080/RESTfulProject/REST/WebService/GetFeeds').map(function (res) { return res.json(); });
+                    return this._http.get('http://localhost:8080/RESTfulProject/REST/WebService/GetFeeds')
+                        .map(function (res) { return res.json(); });
                 };
                 ExamService = __decorate([
                     core_1.Injectable(), 

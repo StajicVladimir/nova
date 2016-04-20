@@ -45,6 +45,8 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './globa
                 };
                 LoginComponent.prototype.onLogin = function () {
                     this._gVS.setLoggedIn(true);
+                    this.id = +this.student.name;
+                    this._gVS.setStudentId(this.id);
                     this._router.navigate(['Welcome', { name: this.student.name, pass: this.student.pass }]);
                     // this._globals.setLoggedIn(true);
                 };

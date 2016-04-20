@@ -21,7 +21,7 @@ import {GlobalVarsService} from './global-vars.service';
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Terms</a>
 			</nav>
 		</header>
-		{{_gVS.getLoggedIn()}}
+		{{_gVS.getLoggedIn()}}{{_gVS.getStudentId()}}
 		<div style="margin:0px 50px 0px 50px;">
 			
 			<router-outlet></router-outlet>

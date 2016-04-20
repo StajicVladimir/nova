@@ -1,0 +1,32 @@
+import {Component, OnInit} from 'angular2/core';
+import {StudentService} from './student.service';
+import {GlobalVarsService} from '../global-vars.service';
+import {Student} from './student';
+
+@Component({
+    selector: 'student-details',
+    template: `
+            <h3>Hello From student details </h3>
+            <!--<ul>
+            <li *ngFor ="#student of students"> {{student.ime}}</li>
+            </ul>-->
+                
+    `,
+    providers: [StudentService]
+})
+
+export class StudentDetailsComponent implements OnInit{
+    constructor (private _studentService: StudentService, private _gVS: GlobalVarsService){}
+    public students = [];
+    /*public getStudent(){
+        
+        this._studentService.getStudent().subscribe(
+            data => { this.students = data},
+            err => console.error(err),
+            () => console.log('done loading foods')
+        );
+    }*/
+    public ngOnInit(){
+       // this.getStudent();
+    }
+}

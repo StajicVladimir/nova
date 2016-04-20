@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './student/student-details.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, student_details_component_1;
     var WelcomeScreenComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (student_details_component_1_1) {
+                student_details_component_1 = student_details_component_1_1;
             }],
         execute: function() {
             WelcomeScreenComponent = (function () {
@@ -26,14 +29,16 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                     this._router = _router;
                     this._routeParams = _routeParams;
                 }
+                // student: Student;
                 WelcomeScreenComponent.prototype.ngOnInit = function () {
                     //this.pass = this._routeParams.get("pass");
-                    this.student = { name: this._routeParams.get("name"), pass: this._routeParams.get("pass") }; //pass = this._routeParams.get("pass");
+                    //this.student = {name : this._routeParams.get("name"),pass : this._routeParams.get("pass")}//pass = this._routeParams.get("pass");
                 };
                 WelcomeScreenComponent = __decorate([
                     core_1.Component({
                         selector: 'welcome',
-                        template: "\n       \n        <h3> Welcome {{student.name}}!!! :) <br>vasa lozinka je: {{student.pass}}</h3>\n        \n    "
+                        template: "\n       \n        <div><h3> Welcome !!! :) <br>vasa lozinka je:</h3>\n        {{broj}}</div>\n        <student-details></student-details>\n    ",
+                        directives: [student_details_component_1.StudentDetailsComponent]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])
                 ], WelcomeScreenComponent);

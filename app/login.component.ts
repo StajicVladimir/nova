@@ -69,7 +69,7 @@ import {GlobalVarsService} from './global-vars.service';
 export class LoginComponent {
     myForm :ControlGroup;
     student: Student = {name: "", pass:""};
-    
+    private id: number;
     ngOnInit():any{
        //this.newContact = {firstName: '',lastName: this._routeParams.get('lastName'), phone:'', email: ''};
       /* this.myForm = this._formBuilder.group({
@@ -85,6 +85,8 @@ export class LoginComponent {
    
    onLogin(){
        this._gVS.setLoggedIn(true);
+       this.id = +this.student.name;
+       this._gVS.setStudentId(this.id);
        this._router.navigate(['Welcome',{name: this.student.name, pass: this.student.pass}]);
       // this._globals.setLoggedIn(true);
       
