@@ -13,6 +13,7 @@ import {Student} from './student';
            Na odseku: {{trenutniStudent.odsek}}<br>
            Godina: {{trenutniStudent.godinaStudija}}<br>
            Uplaceno: {{trenutniStudent.kredit}}rsd
+           pass: {{trenutniStudent.pass}}
            
            
            
@@ -24,7 +25,7 @@ import {Student} from './student';
 export class StudentDetailsComponent implements OnInit{
     constructor (private _studentService: StudentService, private _gVS: GlobalVarsService){}
    
-    trenutniStudent:Student = { id:2, ime:"dfds",prezime:"heeeeee", godinaStudija:4, odsek:5,kredit:3};
+    trenutniStudent:Student = { id:2, ime:"dfds",prezime:"heeeeee", godinaStudija:4, odsek:5,kredit:3, pass:""};
     
     
     public getStud(){

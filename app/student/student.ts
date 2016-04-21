@@ -5,4 +5,5 @@ export class Student{
     godinaStudija: number;
     odsek:number;
     kredit:number;
+    pass:string;
 }

@@ -28,7 +28,7 @@ System.register(['angular2/core', 'angular2/http', '../global-vars.service'], fu
                 function StudentService(_http, _gVS) {
                     this._http = _http;
                     this._gVS = _gVS;
-                    this.urlString = 'http://localhost:8080/RESTfulProject/REST/WebService/Students/';
+                    this.urlString = 'http://localhost:8080/RESTfulProject/REST/WebService/Students/'; //PAZI NA POSLEDNJI /!!!!!
                 }
                 StudentService.prototype.getStudent = function () {
                     this.urlString = this.urlString + this._gVS.getStudentId().toString();

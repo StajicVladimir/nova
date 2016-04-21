@@ -8,7 +8,7 @@ import {GlobalVarsService} from '../global-vars.service';
 
 @Injectable()
 export class StudentService{
-    urlString :string = 'http://localhost:8080/RESTfulProject/REST/WebService/Students/';
+    urlString :string = 'http://localhost:8080/RESTfulProject/REST/WebService/Students/';//PAZI NA POSLEDNJI /!!!!!
     constructor (private _http:Http,private _gVS : GlobalVarsService){}
     
   getStudent(){

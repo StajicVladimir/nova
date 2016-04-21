@@ -28,7 +28,7 @@ System.register(['angular2/core', './student.service', '../global-vars.service']
                 function StudentDetailsComponent(_studentService, _gVS) {
                     this._studentService = _studentService;
                     this._gVS = _gVS;
-                    this.trenutniStudent = { id: 2, ime: "dfds", prezime: "heeeeee", godinaStudija: 4, odsek: 5, kredit: 3 };
+                    this.trenutniStudent = { id: 2, ime: "dfds", prezime: "heeeeee", godinaStudija: 4, odsek: 5, kredit: 3, pass: "" };
                 }
                 StudentDetailsComponent.prototype.getStud = function () {
                     var _this = this;
@@ -43,7 +43,7 @@ System.register(['angular2/core', './student.service', '../global-vars.service']
                 StudentDetailsComponent = __decorate([
                     core_1.Component({
                         selector: 'student-details',
-                        template: "\n            \n            <h3>Hello From student details </h3>\n            \n           Ime i prezime: {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>\n           Na odseku: {{trenutniStudent.odsek}}<br>\n           Godina: {{trenutniStudent.godinaStudija}}<br>\n           Uplaceno: {{trenutniStudent.kredit}}rsd\n           \n           \n           \n                \n    ",
+                        template: "\n            \n            <h3>Hello From student details </h3>\n            \n           Ime i prezime: {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>\n           Na odseku: {{trenutniStudent.odsek}}<br>\n           Godina: {{trenutniStudent.godinaStudija}}<br>\n           Uplaceno: {{trenutniStudent.kredit}}rsd\n           pass: {{trenutniStudent.pass}}\n           \n           \n           \n                \n    ",
                         providers: [student_service_1.StudentService]
                     }), 
                     __metadata('design:paramtypes', [student_service_1.StudentService, global_vars_service_1.GlobalVarsService])
