@@ -3,8 +3,7 @@ import {ControlGroup} from 'angular2/common';
 import {FormBuilder} from 'angular2/common';
 import {Validators} from 'angular2/common';
 
-import {Student} from './student/student';
-import {StudentService} from './student/student.service';
+import {Student} from './student';
 
 import {Router, RouteParams} from 'angular2/router';
 import {GlobalVarsService} from './global-vars.service';
@@ -20,10 +19,10 @@ import {GlobalVarsService} from './global-vars.service';
             <div class="form-group">
                 <label for = "user">Username: </label>
                 <input class="form-control" type="text" id="user" 
-                ngControl="user" [(ngModel)]="studentIndeks" #user = "ngForm"
+                ngControl="user" [(ngModel)]="student.name " #user = "ngForm"
                 
                 required>
-                {{studentIndeks}}
+                <!--{{student.name}}-->
                 <div style="width : 250px; margin:10px 10px 0px 50px; " [hidden]="user.valid" class="alert alert-danger">
                  Name is required
              </div>
@@ -33,7 +32,7 @@ import {GlobalVarsService} from './global-vars.service';
             <div >
                 <label for = "password">Password: </label>
                 <input class="form-control" type="password" id="password" 
-                   ngControl="pass" [(ngModel)]="lozinka" #pass = "ngForm"
+                   ngControl="pass" [(ngModel)]="student.pass" #pass = "ngForm"
                    
                    required >
                <!-- {{student.pass}} -->
@@ -66,48 +65,27 @@ import {GlobalVarsService} from './global-vars.service';
            margin:10px 10px 0px 50px;
         }
              
-    `],
-    providers:[StudentService]
+    `]
     
 })
 export class LoginComponent {
     myForm :ControlGroup;
-    public studentIndeks:number;
-    public lozinka:string;
-    //public lozinka: string;
-    //public user: number;
-    student:Student = { id:2, ime:"dfds",prezime:"heeeeee", godinaStudija:4, odsek:5,kredit:3, pass:"nj"};
-    //private id: number;
+    student: Student = {name: "", pass:""};
+    private id: number;
     ngOnInit():any{
        
       
     }
     
     constructor(private _gVS: GlobalVarsService, private _formBuilder: FormBuilder,
-            private _router:Router, private _routeParams: RouteParams, 
-            private _studentService: StudentService){}
-    public getStud(){
-        this._studentService.getStudent().subscribe(
-            data =>{this.student = data},
-            err =>console.error(err),
-            ()=>console.log('done loading students')  
-        );
-      }
+            private _router:Router, private _routeParams: RouteParams){}
+   
    onLogin(){
-       
-       this._gVS.setStudentId(this.studentIndeks);
-       
-       this.getStud();
-       if (this.student.id == this.studentIndeks && this.student.pass == this.lozinka) {
-           this._gVS.setLoggedIn(true);
-       //this.student.id = +this.student.name;
-       
-       this._router.navigate(['Welcome',{name: this.studentIndeks, pass: this.lozinka}]);
+       this._gVS.setLoggedIn(true);
+       this.id = +this.student.name;
+       this._gVS.setStudentId(this.id);
+       this._router.navigate(['Welcome',{name: this.student.name, pass: this.student.pass}]);
       // this._globals.setLoggedIn(true);
-       }else{
-           this._router.navigate(['Login']);
-       }
-       
       
    }
    onSubmit(){}

@@ -35,7 +35,7 @@ System.register(['angular2/core', 'angular2/common', '../student/student.service
                     this._formBuilder = _formBuilder;
                     this._studentService = _studentService;
                     this._termService = _termService;
-                    this.trenutniStudent = { id: 2, ime: "dfds", prezime: "heeeeee", godinaStudija: 4, odsek: 5, kredit: 3 };
+                    this.trenutniStudent = { id: 2, ime: "dfds", prezime: "heeeeee", godinaStudija: 4, odsek: 5, kredit: 3, pass: "vlada" };
                     this.terms = [{ id: 1, date: "vlada" }];
                 }
                 PrijavaComponent.prototype.getStud = function () {
