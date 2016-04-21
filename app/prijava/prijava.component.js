@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/common', '../student/student.service', '../term/term.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/common', '../student/student.service', '../term/term.service', '../predmet/predmet-list.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/common', '../student/student.service
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, student_service_1, term_service_1;
+    var core_1, common_1, student_service_1, term_service_1, predmet_list_component_1;
     var PrijavaComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/common', '../student/student.service
             },
             function (term_service_1_1) {
                 term_service_1 = term_service_1_1;
+            },
+            function (predmet_list_component_1_1) {
+                predmet_list_component_1 = predmet_list_component_1_1;
             }],
         execute: function() {
             PrijavaComponent = (function () {
@@ -53,6 +56,7 @@ System.register(['angular2/core', 'angular2/common', '../student/student.service
                         templateUrl: '../app/prijava/prijava-component.html',
                         styles: ["\n         label{\n            display: inline-block;\n            width: 140px;\n        }\n        input {\n            width: 250px;\n            margin: 10px 10px 0px 50px;\n        }\n        label{\n             margin:10px 10px 0px 50px;\n        }\n        button{\n           margin:10px 10px 0px 50px;\n        }\n             \n    "],
                         providers: [student_service_1.StudentService, term_service_1.TermService],
+                        directives: [predmet_list_component_1.PredmetListComponent]
                     }), 
                     __metadata('design:paramtypes', [common_1.FormBuilder, student_service_1.StudentService, term_service_1.TermService])
                 ], PrijavaComponent);

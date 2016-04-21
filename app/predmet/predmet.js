@@ -1,17 +1,17 @@
 System.register([], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var Ispit;
+    var Predmet;
     return {
         setters:[],
         execute: function() {
-            Ispit = (function () {
-                function Ispit() {
+            Predmet = (function () {
+                function Predmet() {
                 }
-                return Ispit;
+                return Predmet;
             }());
-            exports_1("Ispit", Ispit);
+            exports_1("Predmet", Predmet);
         }
     }
 });
-//# sourceMappingURL=ispit.js.map
+//# sourceMappingURL=predmet.js.map

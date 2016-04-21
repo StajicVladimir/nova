@@ -9,6 +9,10 @@ import {StudentService} from '../student/student.service';
 import {Term} from '../term/term';
 import {TermService} from '../term/term.service';
 
+
+
+import {PredmetListComponent} from '../predmet/predmet-list.component';
+
 @Component({
     selector:'prijava-component',
     
@@ -32,6 +36,7 @@ import {TermService} from '../term/term.service';
              
     `],
     providers: [StudentService,TermService],
+    directives:[PredmetListComponent]
     
 })
 export class PrijavaComponent implements OnInit{
