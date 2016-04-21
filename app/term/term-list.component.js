@@ -25,33 +25,26 @@ System.register(['angular2/core', './term.service', 'angular2/router'], function
             }],
         execute: function() {
             TermListComponent = (function () {
-                function TermListComponent(_termService, _router, _routeParams) {
-                    this._termService = _termService;
+                function TermListComponent(_router, _routeParams, _termService) {
                     this._router = _router;
                     this._routeParams = _routeParams;
-                    this.terms = [];
-                    this.selectedTerm = null;
+                    this._termService = _termService;
+                    this.terms = [{ id: 1, date: "vlada" }];
                 }
                 TermListComponent.prototype.getTerms = function () {
                     var _this = this;
-                    // this._termService.getTerms().then((terms: Term[]) => this.terms = terms);
-                    this._termService.getTerms().subscribe(function (data) { _this.terms = data; }, function (err) { return console.error(err); }, function () { return console.log('done loading foods'); });
+                    this._termService.getTerms().subscribe(function (data) { return _this.terms = data; }, function (err) { return console.error(err); }, function () { return console.log('done loading Terms'); });
                 };
                 TermListComponent.prototype.ngOnInit = function () {
                     this.getTerms();
                 };
-                TermListComponent.prototype.onSelectTerm = function (term) {
-                    this.selectedTerm = term;
-                    this._router.navigate(['TermDetails', { date: this.selectedTerm.date }]);
-                };
                 TermListComponent = __decorate([
                     core_1.Component({
-                        selector: 'term-list',
-                        template: "\n       <div> Hello from term list</div>\n       <ul >\n            <li *ngFor =\"#term of terms\"\n            (click) = \"onSelectTerm(term)\">\n                {{term.date}}\n                \n                \n            </li>\n       </ul>\n    \n    ",
-                        styles: ["\n        ul{\n    list-style: none;\n    margin: 16px;\n    padding: 0;\n}\n\nli{\n    cursor: pointer;\n    transition: padding 0.3s;\n}\n\nli:hover{\n    padding-left: 8px;\n    color: #369;\n    font-weight: bold;\n    border-left: 3px solid #369;\n}\n.clicked{\n    color: #369;\n    font-weight: bold;\n}\n    "],
+                        selector: '<term-list>',
+                        template: "\n        <h3>Spisak rokova u kojima ste bili aktivni: </h3>\n        <ul>\n            <li *ngFor =\"#term of terms\">\n                {{term.date}}\n            </li>\n        </ul>\n        \n    ",
                         providers: [term_service_1.TermService]
                     }), 
-                    __metadata('design:paramtypes', [term_service_1.TermService, router_1.Router, router_1.RouteParams])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, term_service_1.TermService])
                 ], TermListComponent);
                 return TermListComponent;
             }());

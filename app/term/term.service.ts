@@ -1,17 +1,20 @@
 import {Injectable} from 'angular2/core';
 import {Term} from './term';
-import {TERMS} from './mock-terms';
+
 
 import {Http, Response, Headers} from 'angular2/http';
 import {Observable} from 'rxjs/Rx';
+import {GlobalVarsService} from '../global-vars.service';
 
 @Injectable()
 export class TermService{
-    
-    constructor (private _http:Http){}
+    private urlPath='http://localhost:8080/RESTfulProject/REST/WebService/Rokovi';
+    constructor (private _http:Http, private _gVS:GlobalVarsService){}
     
     getTerms (){
-        //return Promise.resolve(TERMS);
-         return this._http.get('http://localhost:8080/RESTfulProject/REST/WebService/GetTerms').map((res:Response) => res.json());
+        
+        this.urlPath = this.urlPath + this._gVS.getStudentId().toString();
+         return this._http.get('http://localhost:8080/RESTfulProject/REST/WebService/Rokovi/9807')
+                    .map((res:Response) => res.json());
     }
 }

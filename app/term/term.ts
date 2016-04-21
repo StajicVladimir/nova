@@ -1,4 +1,5 @@
 export class Term{
-    date: string;
+    id :number;
+    date: String;
     
 }
