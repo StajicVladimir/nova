@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../exam/exam-list.component'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './ispiti-rok.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../exam/exam-list.componen
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, exam_list_component_1;
+    var core_1, router_1, ispiti_rok_component_1;
     var TermDetailsComponent;
     return {
         setters:[
@@ -20,11 +20,12 @@ System.register(['angular2/core', 'angular2/router', '../exam/exam-list.componen
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (exam_list_component_1_1) {
-                exam_list_component_1 = exam_list_component_1_1;
+            function (ispiti_rok_component_1_1) {
+                ispiti_rok_component_1 = ispiti_rok_component_1_1;
             }],
         execute: function() {
             TermDetailsComponent = (function () {
+                //temp:Date;
                 function TermDetailsComponent(_router, _routeParams) {
                     this._router = _router;
                     this._routeParams = _routeParams;
@@ -32,9 +33,11 @@ System.register(['angular2/core', 'angular2/router', '../exam/exam-list.componen
                 TermDetailsComponent.prototype.ngOnInit = function () {
                     //this.pass = this._routeParams.get("pass");
                     //this.term = {date : this._routeParams.get("date"),pass : this._routeParams.get("pass")};
-                    this.datum = this._routeParams.get("date");
+                    //this.datum = this._routeParams.get("date");
                     // this.datum = this.datum.substring(0,10);
                     //pass = this._routeParams.get("pass");
+                    this.datum = this._routeParams.get("date");
+                    this.id = +this._routeParams.get("id");
                 };
                 TermDetailsComponent.prototype.onBackToTermList = function () {
                     this._router.navigate(['Terms']);
@@ -42,8 +45,8 @@ System.register(['angular2/core', 'angular2/router', '../exam/exam-list.componen
                 TermDetailsComponent = __decorate([
                     core_1.Component({
                         selector: 'term-details',
-                        template: "\n        <h3>Details for term from: {{datum}}</h3> \n        <button (click) = \"onBackToTermList()\">Back to terms</button>\n            <exam-list><exam-list>\n        \n    ",
-                        directives: [exam_list_component_1.ExamListComponent]
+                        template: "\n        <h3>Detalji za rok od: {{datum}}</h3> \n        <button (click) = \"onBackToTermList()\">Back to terms</button>\n            <ispiti-rok [rokId]=\"id\"></ispiti-rok>\n        \n    ",
+                        directives: [ispiti_rok_component_1.IspitiRokComponent]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])
                 ], TermDetailsComponent);

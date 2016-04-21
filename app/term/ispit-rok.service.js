@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/http', '../global-vars.service'], fu
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, http_1, global_vars_service_1;
-    var TermService;
+    var IspitRokService;
     return {
         setters:[
             function (core_1_1) {
@@ -24,25 +24,25 @@ System.register(['angular2/core', 'angular2/http', '../global-vars.service'], fu
                 global_vars_service_1 = global_vars_service_1_1;
             }],
         execute: function() {
-            TermService = (function () {
-                function TermService(_http, _gVS) {
+            IspitRokService = (function () {
+                function IspitRokService(_http, _gVS) {
                     this._http = _http;
                     this._gVS = _gVS;
-                    this.urlPath = 'http://localhost:8080/RESTfulProject/REST/WebService/Rokovi/';
+                    this.urlPath = 'http://localhost:8080/RESTfulProject/REST/WebService/RokIspiti/';
                 }
-                TermService.prototype.getTerms = function () {
-                    this.urlPath = this.urlPath + this._gVS.getStudentId().toString();
+                IspitRokService.prototype.getIspitRok = function (rokId) {
+                    this.urlPath = this.urlPath + this._gVS.getStudentId().toString() + ',' + rokId.toString();
                     return this._http.get(this.urlPath)
                         .map(function (res) { return res.json(); });
                 };
-                TermService = __decorate([
+                IspitRokService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http, global_vars_service_1.GlobalVarsService])
-                ], TermService);
-                return TermService;
+                ], IspitRokService);
+                return IspitRokService;
             }());
-            exports_1("TermService", TermService);
+            exports_1("IspitRokService", IspitRokService);
         }
     }
 });
-//# sourceMappingURL=term.service.js.map
+//# sourceMappingURL=ispit-rok.service.js.map

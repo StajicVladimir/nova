@@ -1,4 +1,4 @@
-System.register(['angular2/core', './term.service', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', './term.service', './ispiti-rok.component', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './term.service', 'angular2/router'], function
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, term_service_1, router_1;
+    var core_1, term_service_1, ispiti_rok_component_1, router_1;
     var TermListComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', './term.service', 'angular2/router'], function
             },
             function (term_service_1_1) {
                 term_service_1 = term_service_1_1;
+            },
+            function (ispiti_rok_component_1_1) {
+                ispiti_rok_component_1 = ispiti_rok_component_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -35,13 +38,18 @@ System.register(['angular2/core', './term.service', 'angular2/router'], function
                     var _this = this;
                     this._termService.getTerms().subscribe(function (data) { return _this.terms = data; }, function (err) { return console.error(err); }, function () { return console.log('done loading Terms'); });
                 };
+                TermListComponent.prototype.onSelectTerm = function (term) {
+                    this.selectedTerm = term;
+                    this._router.navigate(['TermDetails', { date: this.selectedTerm.date, id: this.selectedTerm.id }]);
+                };
                 TermListComponent.prototype.ngOnInit = function () {
                     this.getTerms();
                 };
                 TermListComponent = __decorate([
                     core_1.Component({
                         selector: '<term-list>',
-                        template: "\n        <h3>Spisak rokova u kojima ste bili aktivni: </h3>\n        <ul>\n            <li *ngFor =\"#term of terms\">\n                {{term.date}}\n            </li>\n        </ul>\n        \n    ",
+                        template: "\n        <h3>Spisak rokova u kojima ste bili aktivni: </h3>\n        <ul>\n            <li *ngFor =\"#term of terms\"\n                (click) = \"onSelectTerm(term)\"\n            > \n                {{term.id}}{{term.date}}\n            </li>\n        </ul>\n        \n        \n        \n    ",
+                        directives: [ispiti_rok_component_1.IspitiRokComponent],
                         providers: [term_service_1.TermService]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, term_service_1.TermService])
