@@ -7,6 +7,7 @@ import {HistoryComponent} from './history.component';
 import {TermListComponent} from './term/term-list.component';
 import {TermDetailsComponent} from './term/term-details.component';
 import {GlobalVarsService} from './global-vars.service';
+import {PrijavaComponent} from './prijava/prijava.component';
 
 
 @Component({
@@ -21,6 +22,7 @@ import {GlobalVarsService} from './global-vars.service';
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Main Screen</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Terms</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Prijava']">Prijava</a>
 			</nav>
 		</header>
 		{{_gVS.getLoggedIn()}}{{_gVS.getStudentId()}}
@@ -51,7 +53,8 @@ import {GlobalVarsService} from './global-vars.service';
 	{path :'/login', name: 'Login', component: LoginComponent, useAsDefault: true},
 	{path : '/History', name: 'History', component: HistoryComponent},
 	{path : '/Terms', name: 'Terms', component: TermListComponent},
-	{path : '/TermDetails', name: 'TermDetails', component: TermDetailsComponent}
+	{path : '/TermDetails', name: 'TermDetails', component: TermDetailsComponent},
+	{path : '/Prijava', name: 'Prijava', component: PrijavaComponent}
 ])
 export class AppComponent
 {	
@@ -61,7 +64,8 @@ export class AppComponent
 	}
 	public onLogout(){
 		this._gVS.setLoggedIn(false);
-		//this._router.navigate(['login'])
+		this._gVS.setStudentId(0);
+		this._router.navigate(['Login'])
 	}
 	
  }

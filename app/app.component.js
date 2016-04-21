@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './welcome-screen.component', './login.component', './history.component', './term/term-list.component', './term/term-details.component', './global-vars.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './welcome-screen.component', './login.component', './history.component', './term/term-list.component', './term/term-details.component', './global-vars.service', './prijava/prijava.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './welcome-screen.component
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, router_2, welcome_screen_component_1, login_component_1, history_component_1, term_list_component_1, term_details_component_1, global_vars_service_1;
+    var core_1, router_1, router_2, welcome_screen_component_1, login_component_1, history_component_1, term_list_component_1, term_details_component_1, global_vars_service_1, prijava_component_1;
     var AppComponent;
     return {
         setters:[
@@ -38,6 +38,9 @@ System.register(['angular2/core', 'angular2/router', './welcome-screen.component
             },
             function (global_vars_service_1_1) {
                 global_vars_service_1 = global_vars_service_1_1;
+            },
+            function (prijava_component_1_1) {
+                prijava_component_1 = prijava_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -48,12 +51,13 @@ System.register(['angular2/core', 'angular2/router', './welcome-screen.component
                 }
                 AppComponent.prototype.onLogout = function () {
                     this._gVS.setLoggedIn(false);
-                    //this._router.navigate(['login'])
+                    this._gVS.setStudentId(0);
+                    this._router.navigate(['Login']);
                 };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: "\n\t\t<h2>Prijava ispita early days!</h2>\n\t\t<header>\n\t\t\t<nav style=\"margin:0px 50px 25px 50px;\">\n\t\t\t\t<a [class.disabled]=\"_gVS.getLoggedIn()\"[routerLink] = \"['Login']\" style =\"float:right\">Login</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" style =\"float:right\" \n\t\t\t\t\t(click)=\"onLogout()\">Logout</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['Welcome']\">Main Screen</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['History']\">History</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['Terms']\">Terms</a>\n\t\t\t</nav>\n\t\t</header>\n\t\t{{_gVS.getLoggedIn()}}{{_gVS.getStudentId()}}\n\t\t<div style=\"margin:0px 50px 0px 50px;\">\n\t\t\t\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t\t",
+                        template: "\n\t\t<h2>Prijava ispita early days!</h2>\n\t\t<header>\n\t\t\t<nav style=\"margin:0px 50px 25px 50px;\">\n\t\t\t\t<a [class.disabled]=\"_gVS.getLoggedIn()\"[routerLink] = \"['Login']\" style =\"float:right\">Login</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" style =\"float:right\" \n\t\t\t\t\t(click)=\"onLogout()\">Logout</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['Welcome']\">Main Screen</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['History']\">History</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['Terms']\">Terms</a>\n\t\t\t\t<a [class.disabled]=\"!_gVS.getLoggedIn()\" [routerLink] = \"['Prijava']\">Prijava</a>\n\t\t\t</nav>\n\t\t</header>\n\t\t{{_gVS.getLoggedIn()}}{{_gVS.getStudentId()}}\n\t\t<div style=\"margin:0px 50px 0px 50px;\">\n\t\t\t\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t\t",
                         styles: ["\n\t\t\th2 {\n\t\t\t\tcolor :#369;\n\t\t\t\t\n\t\t\t}\n\t\t\ta.disabled {\n   \t\t\t\tpointer-events: none;\n\t\t\t\tbackground-color: #eee;\n \t\t\t    color: #aaa;\n   \t\t\t\tcursor: default;\n\t\t\t}\n\t\t"],
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [global_vars_service_1.GlobalVarsService]
@@ -63,7 +67,8 @@ System.register(['angular2/core', 'angular2/router', './welcome-screen.component
                         { path: '/login', name: 'Login', component: login_component_1.LoginComponent, useAsDefault: true },
                         { path: '/History', name: 'History', component: history_component_1.HistoryComponent },
                         { path: '/Terms', name: 'Terms', component: term_list_component_1.TermListComponent },
-                        { path: '/TermDetails', name: 'TermDetails', component: term_details_component_1.TermDetailsComponent }
+                        { path: '/TermDetails', name: 'TermDetails', component: term_details_component_1.TermDetailsComponent },
+                        { path: '/Prijava', name: 'Prijava', component: prijava_component_1.PrijavaComponent }
                     ]), 
                     __metadata('design:paramtypes', [global_vars_service_1.GlobalVarsService, router_1.Router])
                 ], AppComponent);
