@@ -33,11 +33,7 @@ export class StudentDetailsComponent implements OnInit{
             err =>console.error(err),
             ()=>console.log('done loading students')  
         );
-       //this.students[1].ime= "noooooo";
-       //this.duzina = this.students.length;
-      /* this.jedan = {id:this.students[0].id, ime:this.students[0].ime,
-                        prezime: this.students[0].prezime, godinaStudija: this.students[0].godinaStudija,
-                        odsek: this.students[0].odsek, kredit: this.students[0].kredit};*/
+      
     }
    
    

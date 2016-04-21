@@ -33,11 +33,6 @@ System.register(['angular2/core', './student.service', '../global-vars.service']
                 StudentDetailsComponent.prototype.getStud = function () {
                     var _this = this;
                     this._studentService.getStudent().subscribe(function (data) { _this.trenutniStudent = data; }, function (err) { return console.error(err); }, function () { return console.log('done loading students'); });
-                    //this.students[1].ime= "noooooo";
-                    //this.duzina = this.students.length;
-                    /* this.jedan = {id:this.students[0].id, ime:this.students[0].ime,
-                                      prezime: this.students[0].prezime, godinaStudija: this.students[0].godinaStudija,
-                                      odsek: this.students[0].odsek, kredit: this.students[0].kredit};*/
                 };
                 StudentDetailsComponent.prototype.ngOnInit = function () {
                     this.getStud();

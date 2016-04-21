@@ -17,4 +17,9 @@ export class TermService{
          return this._http.get(this.urlPath)
                     .map((res:Response) => res.json());
     }
+    getFutureTerms(){
+        
+         return this._http.get('http://localhost:8080/RESTfulProject/REST/WebService/BuduciRokovi/')
+                    .map((res:Response) => res.json());
+    }
 }

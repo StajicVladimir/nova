@@ -35,6 +35,10 @@ System.register(['angular2/core', 'angular2/http', '../global-vars.service'], fu
                     return this._http.get(this.urlPath)
                         .map(function (res) { return res.json(); });
                 };
+                TermService.prototype.getFutureTerms = function () {
+                    return this._http.get('http://localhost:8080/RESTfulProject/REST/WebService/BuduciRokovi/')
+                        .map(function (res) { return res.json(); });
+                };
                 TermService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http, global_vars_service_1.GlobalVarsService])

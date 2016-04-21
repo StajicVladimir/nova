@@ -36,12 +36,6 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './globa
                     this.student = { name: "", pass: "" };
                 }
                 LoginComponent.prototype.ngOnInit = function () {
-                    //this.newContact = {firstName: '',lastName: this._routeParams.get('lastName'), phone:'', email: ''};
-                    /* this.myForm = this._formBuilder.group({
-                         'name' : [this.student.name,Validators.required],
-                         'pass': ['',Validators.required],
-                         
-                     })*/
                 };
                 LoginComponent.prototype.onLogin = function () {
                     this._gVS.setLoggedIn(true);
@@ -65,20 +59,4 @@ System.register(['angular2/core', 'angular2/common', 'angular2/router', './globa
         }
     }
 });
-/*
- input{
-            
-            
-            border: solid 1px #dcdcdc;
-             transition: box-shadow 0.3s, border 0.3s;
-            -webkit-border-radius: 15px;
-             -moz-border-radius: 15px;
-             border-radius: 15px;
-             margin-top: 15 px;
-        }
-        .style-1 input[type="text"]:focus,
-        .style-1 input[type="text"].focus {
-            border: solid 1px #707070;
-            box-shadow: 0 0 5px 1px #969696;
-        }  */ 
 //# sourceMappingURL=login.component.js.map

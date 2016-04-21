@@ -71,12 +71,7 @@ export class LoginComponent {
     student: Student = {name: "", pass:""};
     private id: number;
     ngOnInit():any{
-       //this.newContact = {firstName: '',lastName: this._routeParams.get('lastName'), phone:'', email: ''};
-      /* this.myForm = this._formBuilder.group({
-           'name' : [this.student.name,Validators.required],
-           'pass': ['',Validators.required],
-           
-       })*/
+       
       
     }
     
@@ -93,20 +88,3 @@ export class LoginComponent {
    }
    onSubmit(){}
 }
-
-/*
- input{
-            
-            
-            border: solid 1px #dcdcdc;
-             transition: box-shadow 0.3s, border 0.3s;
-            -webkit-border-radius: 15px;
-             -moz-border-radius: 15px;
-             border-radius: 15px;
-             margin-top: 15 px;
-        }
-        .style-1 input[type="text"]:focus,
-        .style-1 input[type="text"].focus {
-            border: solid 1px #707070;
-            box-shadow: 0 0 5px 1px #969696;
-        }  */
