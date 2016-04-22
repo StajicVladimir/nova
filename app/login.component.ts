@@ -93,12 +93,9 @@ export class LoginComponent {
             ()=>console.log('done loading students')  
         );
       }
-   onLogin(){
-       
-       this._gVS.setStudentId(this.studentIndeks);
-       
-       this.getStud();
-       if (this.student.id == this.studentIndeks && this.student.pass == this.lozinka) {
+      
+    checkLogin(){
+        if (this.student.id == this.studentIndeks && this.student.pass == this.lozinka) {
            this._gVS.setLoggedIn(true);
        //this.student.id = +this.student.name;
        
@@ -107,6 +104,14 @@ export class LoginComponent {
        }else{
            this._router.navigate(['Login']);
        }
+    }
+   onLogin(){
+       
+       this._gVS.setStudentId(this.studentIndeks);
+       
+       this.getStud();
+       this.checkLogin();
+       
        
       
    }
