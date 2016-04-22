@@ -1,7 +1,7 @@
 import {Injectable} from 'angular2/core';
 
 
-import {Http, Response, Headers} from 'angular2/http';
+import {Http, Response, Headers,RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Rx';
 import {Student} from './student';
 import {GlobalVarsService} from '../global-vars.service';
@@ -24,5 +24,13 @@ export class StudentService{
         this._http.post(this.urlString,JSON.stringify({ime:"nja",prezime:"njanjic", adresa:"njanjava"}),{headers:this.headers})
         .map((res:Response) => res.json());
     }*/
+    postStudent(ime:string, prezime:string, adresa:string){
+        let body = "id="+this._gVS.getStudentId().toString()+"&ime="+ime+"&prezime="+prezime+"&adresa="+adresa;
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.post(this.urlString, body, options)
+                    .map((res:Response) => res.json());
+    }
    
 }

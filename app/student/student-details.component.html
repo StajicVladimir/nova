@@ -1,0 +1,26 @@
+ <h2> Dobrodošli u vaš nalog</h2>
+           Vaši podatci: <br> 
+           Ime i prezime: {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>
+           Na odseku: {{trenutniStudent.odsek}}<br>
+           Adresa: {{trenutniStudent.adresa}}<br>
+           Godina: {{trenutniStudent.godinaStudija}}<br>
+           Uplaceno: {{trenutniStudent.kredit}}rsd <br>
+           
+           <button>Izmena ličnih podataka</button>
+           <form #myForm = "ngForm">
+                 <div style="width : 250px;">
+                    <label for = "ime"> Unesite ime: </label>
+                    <input class="form-control" type="text" id="ime" 
+                        ngControl="ime" [(ngModel)]="trenutniStudent.ime" #ime = "ngForm">
+                  </div>  
+                  <div style="width : 250px;">
+                    <label for = "prezime"> Unesite prezime: </label>
+                    <input class="form-control" type="text" id="prezime" 
+                         ngControl="prezime" [(ngModel)]="trenutniStudent.prezime" #prezime = "ngForm">
+                   </div>
+                   <div style="width : 250px;">
+                     <label for = "adresa"> Unesite adresu: </label>
+                     <input class="form-control" type="text" id="adresa" 
+                      ngControl="adresa" [(ngModel)]="trenutniStudent.adresa" #adresa = "ngForm">
+                </div> 
+           </form>

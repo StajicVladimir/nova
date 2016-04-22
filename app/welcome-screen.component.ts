@@ -12,8 +12,8 @@ import {Observable} from 'rxjs/Rx';
     selector: 'welcome',
     template: `
         
-        <button (click) = "onClick()">dugme</button>
-       {{ime}}
+        <!--<button (click) = "onClick()">dugme</button> -->
+       
         <student-details></student-details>
         
     `,
