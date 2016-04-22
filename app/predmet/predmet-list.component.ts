@@ -12,10 +12,33 @@ import {Predmet} from './predmet';
             </li>
         </ul>
     `,
+    styles:[`
+        ul{
+            list-style: none;
+            margin: 16px;
+            padding: 0;
+        }
+
+        li{
+            cursor: pointer;
+            transition: padding 0.3s;
+        }
+
+        li:hover{
+             padding-left: 8px;
+             color: #369;
+             font-weight: bold;
+             border-left: 3px solid #369;
+        }
+        .clicked{
+            color: #369;
+             font-weight: bold;
+        }
+    `],
     providers:[PredmetService]
 })
 export class PredmetListComponent{
-    public predmeti:Predmet[] = [{id: 1, naziv:"vlada", profesor: "vlada"}];
+    public predmeti:Predmet[] = [{id: 1, naziv:"ucitavam", profesor: "ucitavam"}];
     
     constructor(private _predmetService: PredmetService){}
     
@@ -27,7 +50,7 @@ export class PredmetListComponent{
       
       err => console.error(err),
       
-      () => console.log('done loading foods')
+      () => console.log('ucitao predmete')
     );
     }
     ngOnInit(){

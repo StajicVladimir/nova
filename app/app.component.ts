@@ -13,9 +13,10 @@ import {PrijavaComponent} from './prijava/prijava.component';
 @Component({
 	selector: 'my-app',
 	template: `
-		<h2>Prijava ispita early days!</h2>
+		
 		<header>
-			<nav style="margin:0px 50px 25px 50px;">
+		<h2>Prijava ispita early days!</h2>
+			<nav style="margin:0px 50px 0px 50px;">
 				<a [class.disabled]="_gVS.getLoggedIn()"[routerLink] = "['Login']" style ="float:right">Login</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" style ="float:right" 
 					(click)="onLogout()">Logout</a>
@@ -25,23 +26,27 @@ import {PrijavaComponent} from './prijava/prijava.component';
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Prijava']">Prijava</a>
 			</nav>
 		</header>
-		{{_gVS.getLoggedIn()}}{{_gVS.getStudentId()}}
+		<!--{{_gVS.getLoggedIn()}}{{_gVS.getStudentId()}}-->
 		<div style="margin:0px 50px 0px 50px;">
 			
 			<router-outlet></router-outlet>
 		</div>
 		`,
 		styles:[`
+			
+			
 			h2 {
-				color :#369;
+				color :#269;
 				
 			}
+			
 			a.disabled {
    				pointer-events: none;
 				background-color: #eee;
  			    color: #aaa;
    				cursor: default;
 			}
+			
 		`],
 		
 	directives: [ROUTER_DIRECTIVES],

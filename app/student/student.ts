@@ -6,4 +6,5 @@ export class Student{
     odsek:number;
     kredit:number;
     pass:string;
+    adresa:string;
 }

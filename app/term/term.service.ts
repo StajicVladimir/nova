@@ -13,9 +13,12 @@ export class TermService{
     
     getTerms (){
         
-        this.urlPath = this.urlPath + this._gVS.getStudentId().toString();
+        this.urlPath = this.urlPath + 'student/'+this._gVS.getStudentId().toString();
          return this._http.get(this.urlPath)
                     .map((res:Response) => res.json());
+    }
+    getTerm (termId:number){
+        
     }
     getFutureTerms(){
         

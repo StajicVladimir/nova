@@ -1,54 +1,16 @@
 <h1>Prijava ispita:</h1>
 <h3>Na raspolaganju imate: {{trenutniStudent.kredit}} kredita</h3>
-        <!--<ul>
-            <li *ngFor ="#term of terms"> 
-                {{term.id}}{{term.date}}
-            </li>
-        </ul>-->
         
-       <!-- <select>
-            <option *ngFor = "term of terms">{{term.id}}</option>
-        </select>-->
         <form #myForm = "ngForm">
             <!--**************************-->
-            <div style="width : 250px; margin:10px 10px 0px 50px; " class="form-group">
-                 <label  for="rok">Mozete prijaviti ispite u sledecim rokovima:</label>
-                 <select  class="form-control"
-                    ngControl="termDate" #termDate="ngForm" >
-                     <option *ngFor="#term of terms" [value]="term.id">{{term.date}}</option>
-                 </select>
-                 
+            <div style="width : 100%; margin:10px 10px 0px 50px; " class="form-group">
+                 <div style ="float:right; margin:0% 30% 0% 0% ">
+                    <label  for="rok">Odaberite rok:</label>
+                    <select style="display:inline;" class="form-control"
+                     ngControl="termDate" #termDate="ngForm" >
+                         <option *ngFor="#term of terms" [value]="term.id">{{term.date}}</option>
+                    </select>
+                 </div>
             </div>
-            
-      <!-- *************************-->
-           <!-- <br>
-            <div class="form-group">
-                <label for = "user">Username: </label>
-                <input class="form-control" type="text" id="user" 
-                ngControl="user"  #user = "ngForm"
-                
-                required>
-                
-                <div style="width : 250px; margin:10px 10px 0px 50px; " [hidden]="user.valid" class="alert alert-danger">
-                 Name is required
-             </div>
-            </div>
-             
-            
-            <div >
-                <label for = "password">Password: </label>
-                <input class="form-control" type="password" id="password" 
-                   ngControl="pass"  #pass = "ngForm"
-                   
-                   required >
-               <!-- {{student.pass}} 
-                <div style="width : 250px; margin:10px 10px 0px 50px; " [hidden]="pass.valid" class="alert alert-danger">
-                 Password is required
-             </div>
-            </div>
-            
-            <br>-->
-            
-            
         </form>  
         <predmet-list></predmet-list>

@@ -6,33 +6,30 @@ import {Student} from './student';
 @Component({
     selector: 'student-details',
     template: `
-            
-            <h3>Hello From student details </h3>
-            
+           <h2> Dobrodošli u vaš nalog</h2>
+           Vaši podatci: <br> 
            Ime i prezime: {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>
            Na odseku: {{trenutniStudent.odsek}}<br>
+           Adresa: {{trenutniStudent.adresa}}<br>
            Godina: {{trenutniStudent.godinaStudija}}<br>
-           Uplaceno: {{trenutniStudent.kredit}}rsd
-           pass: {{trenutniStudent.pass}}
+           Uplaceno: {{trenutniStudent.kredit}}rsd <br>
            
-           
-           
-                
-    `,
+           <button>Izmena ličnih podataka</button>
+     `,
     providers: [StudentService]
 })
 
 export class StudentDetailsComponent implements OnInit{
     constructor (private _studentService: StudentService, private _gVS: GlobalVarsService){}
    
-    trenutniStudent:Student = { id:2, ime:"dfds",prezime:"heeeeee", godinaStudija:4, odsek:5,kredit:3, pass:""};
+    trenutniStudent:Student = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:0,kredit:0, pass:"",adresa:"ulica"};
     
     
     public getStud(){
         this._studentService.getStudent().subscribe(
             data =>{this.trenutniStudent = data},
             err =>console.error(err),
-            ()=>console.log('done loading students')  
+            ()=>console.log('ucitao studente')  
         );
       
     }

@@ -41,7 +41,7 @@ import {GlobalVarsService} from './global-vars.service';
                  Password is required
              </div>
             </div>
-            
+            sfdsfdsfds
             <br>
             <div>
                 <button (click) = "onLogin()" [disabled] = "!myForm.valid" >login</button>
@@ -76,7 +76,7 @@ export class LoginComponent {
     public lozinka:string;
     //public lozinka: string;
     //public user: number;
-    student:Student = { id:2, ime:"dfds",prezime:"heeeeee", godinaStudija:4, odsek:5,kredit:3, pass:"nj"};
+    student:Student = { id:2, ime:"ime",prezime:"prezime", godinaStudija:4, odsek:5,kredit:3, pass:"pass", adresa:"adresa"};
     //private id: number;
     ngOnInit():any{
        

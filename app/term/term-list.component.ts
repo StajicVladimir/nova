@@ -13,13 +13,36 @@ import {Router, RouteParams} from 'angular2/router';
             <li *ngFor ="#term of terms"
                 (click) = "onSelectTerm(term)"
             > 
-                {{term.id}}{{term.date}}
+                {{term.date}}
             </li>
         </ul>
         
         
         
     `,
+    styles:[`
+        ul{
+            list-style: none;
+            margin: 16px;
+            padding: 0;
+        }
+
+        li{
+            cursor: pointer;
+            transition: padding 0.3s;
+        }
+
+        li:hover{
+             padding-left: 8px;
+             color: #369;
+             font-weight: bold;
+             border-left: 3px solid #369;
+        }
+        .clicked{
+            color: #369;
+             font-weight: bold;
+        }
+    `],
     directives:[IspitiRokComponent],
     providers: [TermService]
 })
