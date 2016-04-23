@@ -3,7 +3,7 @@ import {ROUTER_DIRECTIVES,Router} from 'angular2/router';
 import{RouteConfig} from 'angular2/router';
 import {WelcomeScreenComponent} from './welcome-screen.component';
 import {LoginComponent} from './login.component';
-import {HistoryComponent} from './history.component';
+//import {HistoryComponent} from './history.component';
 import {TermListComponent} from './term/term-list.component';
 import {TermDetailsComponent} from './term/term-details.component';
 import {GlobalVarsService} from './global-vars.service';
@@ -21,9 +21,9 @@ import {PrijavaComponent} from './prijava/prijava.component';
 				<a [class.disabled]="!_gVS.getLoggedIn()" style ="float:right" 
 					(click)="onLogout()">Logout</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Main Screen</a>
-				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>
-				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Terms</a>
-				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Prijava']">Prijava</a>
+				<!--<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>-->
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Istorijat Rokova</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Prijava']">Prijava Ispita</a>
 			</nav>
 		</header>
 		<!--{{_gVS.getLoggedIn()}}{{_gVS.getStudentId()}}-->
@@ -56,7 +56,7 @@ import {PrijavaComponent} from './prijava/prijava.component';
 @RouteConfig([
 	{path :'/welcome', name: 'Welcome', component: WelcomeScreenComponent},
 	{path :'/login', name: 'Login', component: LoginComponent, useAsDefault: true},
-	{path : '/History', name: 'History', component: HistoryComponent},
+	//{path : '/History', name: 'History', component: HistoryComponent},
 	{path : '/Terms', name: 'Terms', component: TermListComponent},
 	{path : '/TermDetails', name: 'TermDetails', component: TermDetailsComponent},
 	{path : '/Prijava', name: 'Prijava', component: PrijavaComponent}

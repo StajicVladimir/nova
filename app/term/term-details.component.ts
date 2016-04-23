@@ -8,7 +8,7 @@ import {IspitiRokComponent} from './ispiti-rok.component';
 @Component({
     selector:'term-details',
     template: `
-        <h3>Detalji za rok od: {{datum}}</h3> 
+        <h3>Detalji za {{naziv}} rok od: {{datumPocetka}} do: {{datumZavrsetka}}</h3> 
         <button (click) = "onBackToTermList()">Back to terms</button>
             <ispiti-rok [rokId]="id"></ispiti-rok>
         
@@ -17,7 +17,9 @@ import {IspitiRokComponent} from './ispiti-rok.component';
 })
 export class TermDetailsComponent implements OnInit{
    // public term: Term;
-   datum:string;
+   datumPocetka:string;
+   datumZavrsetka:string;
+   naziv:string;
    id: number;
    
    //temp:Date;
@@ -31,9 +33,10 @@ ngOnInit():any{
         
        // this.datum = this.datum.substring(0,10);
         //pass = this._routeParams.get("pass");
-        this.datum = this._routeParams.get("date");
+        this.datumPocetka = this._routeParams.get("datumPocetka");
+        this.datumZavrsetka = this._routeParams.get("datumZavrsetka");
         this.id = +this._routeParams.get("id");
-        
+        this.naziv = this._routeParams.get("naziv");
     }
     onBackToTermList(){
         this._router.navigate(['Terms']);

@@ -63,7 +63,10 @@ export class TermListComponent implements OnInit{
     
     onSelectTerm(term){
         this.selectedTerm=term;
-        this._router.navigate(['TermDetails',{date: this.selectedTerm.datumPocetka,id:this.selectedTerm.id}]);
+        this._router.navigate(['TermDetails',{datumPocetka: this.selectedTerm.datumPocetka,
+                                              datumZavrsetka: this.selectedTerm.datumZavrsetka,
+                                              id:this.selectedTerm.id,
+                                              naziv:this.selectedTerm.naziv}]);
     }
     ngOnInit(){
         this.getTerms();
