@@ -2,6 +2,8 @@ import {Component, OnInit} from 'angular2/core';
 import {PredmetService} from './predmet.service';
 import {Predmet} from './predmet';
 
+import {GlobalVarsService} from '../global-vars.service'
+
 
 
 @Component({
@@ -46,7 +48,7 @@ export class PredmetListComponent{
     
     
     
-    constructor(private _predmetService: PredmetService){}
+    constructor(private _predmetService: PredmetService, private _gVS : GlobalVarsService){}
       
       /*public getStudent(){
         this._studentService.getStudent().subscribe(
@@ -56,7 +58,7 @@ export class PredmetListComponent{
         );
     }*/
       public getPredmete(){
-        this._predmetService.getPredmete().subscribe(
+        this._predmetService.getPredmeteSaOdseka(this._gVS.getStudentOdsek()).subscribe(
             data => { this.predmeti = data},
             err => console.error(err),
             () => console.log('ucitao predmete')

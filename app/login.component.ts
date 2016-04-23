@@ -62,10 +62,10 @@ export class LoginComponent {
     checkLogin(){
         if (this.student.id == this.studentIndeks && this.student.pass == this.lozinka) {
            this._gVS.setLoggedIn(true);
-       //this.student.id = +this.student.name;
+        this._gVS.setStudentOdsek(this.student.odsek);
        
        this._router.navigate(['Welcome',{name: this.studentIndeks, pass: this.lozinka}]);
-      // this._globals.setLoggedIn(true);
+      
        }else{
            this._router.navigate(['Login']);
        }

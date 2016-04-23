@@ -1,7 +1,7 @@
 import {Component,OnInit} from 'angular2/core';
 import {Term} from './term';
 import {Router, RouteParams} from 'angular2/router';
-import {ExamListComponent} from '../exam/exam-list.component';
+
 import {IspitiRokComponent} from './ispiti-rok.component';
 
 

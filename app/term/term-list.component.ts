@@ -9,6 +9,7 @@ import {Router, RouteParams} from 'angular2/router';
     selector: 'term-list',
     template:`
         <h3>Spisak rokova u kojima ste bili aktivni: </h3>
+        
         <ul>
             <li *ngFor ="#term of terms"
                 (click) = "onSelectTerm(term)"

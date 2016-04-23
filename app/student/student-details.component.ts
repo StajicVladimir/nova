@@ -37,7 +37,7 @@ export class StudentDetailsComponent implements OnInit{
         );
     }
     public getOdsek(){
-        this._odsekService.getOdsek(1).subscribe(
+        this._odsekService.getOdsek(this._gVS.getStudentOdsek()).subscribe(
             data =>{this.odsek = data},
             err =>console.error(err),
             ()=>console.log('ucitao odsek')  

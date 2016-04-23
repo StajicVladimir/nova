@@ -1,15 +1,17 @@
 import {Component, OnInit, Input} from 'angular2/core';
 import {IspitRok} from './ispit-rok';
 import {IspitRokService} from './ispit-rok.service';
+import {IspitiRokDetailsComponent} from './ispiti-rok-details.component'
 //import {ExamDetailsComponent} from './exam-details.component'
 
 @Component({
     selector: 'ispiti-rok',
     template:`
        <div> Hello from Ispiti Rok liste</div>
-        <div style="width : 400px; display: inline-block">
+        <div style="width : 30%; display: inline-block; float: left;" >
        <ul >
-            <li *ngFor ="#exam of exams">
+            <li *ngFor ="#exam of exams"
+                (click) = "onSelectExam(exam)">
             
                 {{exam.nazivPredmeta}} polozen: {{exam.polozio}}
                 
@@ -18,10 +20,10 @@ import {IspitRokService} from './ispit-rok.service';
        </ul>
        </div>
        
-     
-      <!--<exam-details *ngIf = "selectedExam !== null" [exam] = "selectedExam"></exam-details>
-     
-             {{date | date: 'mediumDate'}}-->
+      <div style = "width : 70%;height: 500px display: inline-block;">
+      <ispiti-rok-details *ngIf = "selectedExam !== null" [exam] = "selectedExam" ></ispiti-rok-details>
+      </div>
+             
       
     `,
     styles: [`
@@ -49,34 +51,29 @@ li:hover{
     `],
     //directives: [ExamDetailsComponent],
     inputs: ['rokId'],
-    providers: [IspitRokService]
+    providers: [IspitRokService],
+    directives: [IspitiRokDetailsComponent]
     
 })
 export class IspitiRokComponent implements OnInit {
     @Input()
      rokId:number;  
-    public exams :IspitRok[]=[{nazivPredmeta: "predmet", polozio:1}];
-    //public selectedExam: Exam=null;
-   // public date: Date;
-    //public rokId;
+    public exams :IspitRok[]=[{nazivPredmeta: "ucitavam", polozio:0,profesor:"ucitavam", datum:"ucitavam"}];
+    selectedExam :IspitRok = null;
     constructor(private _examService: IspitRokService){}
     
     public getExams(){
-       //this._examService.getExams().then((exams: Exam[]) => this.exams = exams);
+       
         this._examService.getIspitRok(this.rokId).subscribe(
-      // the first argument is a function which runs on success
-      data => { this.exams = data},
-      // the second argument is a function which runs on error
-      err => console.error(err),
-      // the third argument is a function which runs on completion
-      () => console.log('done loading foods')
-    );
+            data => { this.exams = data},
+            err => console.error(err),
+            () => console.log('ucitao ispite')
+        );
     }
-   /* onSelectExam(exam){
-        this.selectedExam = exam;
-    }*/
+   onSelectExam(exam){
+       this.selectedExam = exam;
+   }
     ngOnInit(): any{
         this.getExams();
-       // this.date = new Date(2015,3,15);
     }
 }
