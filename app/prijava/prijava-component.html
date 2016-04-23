@@ -1,5 +1,5 @@
 <h1>Prijava ispita:</h1>
-<h3>Na raspolaganju imate: {{trenutniStudent.kredit}} kredita</h3>
+<h3>Na raspolaganju imate: {{trenutniStudent.kredit}} kredita{{trenutniStudent.odsek}}</h3>
         
         <form #myForm = "ngForm">
             <!--**************************-->
@@ -15,4 +15,5 @@
                  </div>
             </div>
         </form>  
+        
         <predmet-list></predmet-list>

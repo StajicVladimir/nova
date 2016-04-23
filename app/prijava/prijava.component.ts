@@ -11,6 +11,8 @@ import {TermService} from '../term/term.service';
 
 
 
+
+
 import {PredmetListComponent} from '../predmet/predmet-list.component';
 
 @Component({
@@ -41,6 +43,7 @@ import {PredmetListComponent} from '../predmet/predmet-list.component';
 })
 export class PrijavaComponent implements OnInit{
     myForm :ControlGroup;
+    odsekid:number;
     trenutniStudent:Student = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:0,kredit:0,pass:"pass", adresa: "adresa"};
     public terms:Term[] =[{id: 1, datumPocetka:"ucitavam", datumZavrsetka:"ucitavam", naziv:"ucitavam"}];
     
@@ -53,6 +56,7 @@ export class PrijavaComponent implements OnInit{
             err =>console.error(err),
             ()=>console.log('ucitao studente')  
         );
+        this.odsekid = this.trenutniStudent.id;
       }
       
       public getFutureTerms(){
@@ -67,6 +71,8 @@ export class PrijavaComponent implements OnInit{
       
       ngOnInit(){
           this.getStud();
+           this.odsekid = this.trenutniStudent.odsek;
           this.getFutureTerms();
+         
       }
 }

@@ -3,7 +3,7 @@ import {ROUTER_DIRECTIVES,Router} from 'angular2/router';
 import{RouteConfig} from 'angular2/router';
 import {WelcomeScreenComponent} from './welcome-screen.component';
 import {LoginComponent} from './login.component';
-//import {HistoryComponent} from './history.component';
+
 import {TermListComponent} from './term/term-list.component';
 import {TermDetailsComponent} from './term/term-details.component';
 import {GlobalVarsService} from './global-vars.service';
@@ -15,7 +15,7 @@ import {PrijavaComponent} from './prijava/prijava.component';
 	template: `
 		
 		<header>
-		<h2>Prijava ispita early days!</h2>
+		<h2>Online Prijava Ispita</h2>
 			<nav style="margin:0px 50px 0px 50px;">
 				<a [class.disabled]="_gVS.getLoggedIn()"[routerLink] = "['Login']" style ="float:right">Login</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" style ="float:right" 

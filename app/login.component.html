@@ -1,0 +1,32 @@
+<form #myForm = "ngForm">
+            <br>
+            
+            <div class="form-group">
+                <label for = "user">Indeks: </label>
+                <input class="form-control" type="text" id="user" 
+                    ngControl="user" [(ngModel)]="studentIndeks" #user = "ngForm"
+                    required>
+                <!--{{studentIndeks}}-->
+                <div style="width : 250px; margin:10px 10px 0px 50px; " [hidden]="user.valid" 
+                     class="alert alert-danger">
+                    Obavezno uneti indeks
+                </div>
+            </div>
+             
+            
+            <div >
+                <label for = "password">Lozinka: </label>
+                <input class="form-control" type="password" id="password" 
+                   ngControl="pass" [(ngModel)]="lozinka" #pass = "ngForm"
+                   required>
+               <!-- {{student.pass}} -->
+                <div style="width : 250px; margin:10px 10px 0px 50px; " [hidden]="pass.valid" class="alert alert-danger">
+                    Obavezno uneti lozinku
+                </div>
+            </div>
+            <br>
+            <div>
+                <button (click) = "onLogin()" [disabled] = "!myForm.valid" >login</button>
+            </div>
+            
+        </form>

@@ -2,10 +2,13 @@ import {Component, OnInit} from 'angular2/core';
 import {PredmetService} from './predmet.service';
 import {Predmet} from './predmet';
 
+
+
 @Component({
     selector: 'predmet-list',
     template:`
         <h2>Hello from liste predmeta</h2>
+        
         <ul>
             <li *ngFor = "#predmet of predmeti">
                 {{predmet.naziv}} profesor: {{predmet.profesor}}
@@ -35,25 +38,33 @@ import {Predmet} from './predmet';
              font-weight: bold;
         }
     `],
+    
     providers:[PredmetService]
 })
 export class PredmetListComponent{
     public predmeti:Predmet[] = [{id: 1, naziv:"ucitavam", profesor: "ucitavam"}];
     
-    constructor(private _predmetService: PredmetService){}
     
+    
+    constructor(private _predmetService: PredmetService){}
+      
+      /*public getStudent(){
+        this._studentService.getStudent().subscribe(
+            data =>{this.trenutniStudent = data},
+            err =>console.error(err),
+            ()=>console.log('ucitao studente')  
+        );
+    }*/
       public getPredmete(){
-       
         this._predmetService.getPredmete().subscribe(
-
-      data => { this.predmeti = data},
-      
-      err => console.error(err),
-      
-      () => console.log('ucitao predmete')
-    );
+            data => { this.predmeti = data},
+            err => console.error(err),
+            () => console.log('ucitao predmete')
+         );
     }
+    
     ngOnInit(){
-        this.getPredmete();
+       
+       this.getPredmete();
     }
 }
