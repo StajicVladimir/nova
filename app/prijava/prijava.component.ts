@@ -42,7 +42,7 @@ import {PredmetListComponent} from '../predmet/predmet-list.component';
 export class PrijavaComponent implements OnInit{
     myForm :ControlGroup;
     trenutniStudent:Student = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:0,kredit:0,pass:"pass", adresa: "adresa"};
-    public terms:Term[] =[{id: 1, date:"ucitavam"}];
+    public terms:Term[] =[{id: 1, datumPocetka:"ucitavam", datumZavrsetka:"ucitavam", naziv:"ucitavam"}];
     
     constructor(private _formBuilder: FormBuilder, private _studentService: StudentService,
                     private _termService: TermService){}
@@ -51,7 +51,7 @@ export class PrijavaComponent implements OnInit{
         this._studentService.getStudent().subscribe(
             data =>{this.trenutniStudent = data},
             err =>console.error(err),
-            ()=>console.log('done loading students')  
+            ()=>console.log('ucitao studente')  
         );
       }
       
@@ -60,7 +60,7 @@ export class PrijavaComponent implements OnInit{
             this._termService.getFutureTerms().subscribe(
             data =>  this.terms = data,
             err => console.error(err),
-            () => console.log('done loading Terms')
+            () => console.log('Ucitao buduce rokove')
         );
     
       }

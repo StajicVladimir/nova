@@ -8,7 +8,7 @@
                     <label  for="rok">Odaberite rok:</label>
                     <select style="display:inline;" class="form-control"
                      ngControl="termDate" #termDate="ngForm" >
-                         <option *ngFor="#term of terms" [value]="term.id">{{term.date}}</option>
+                         <option *ngFor="#term of terms" [value]="term.id">{{term.datumPocetka}}</option>
                     </select>
                  </div>
             </div>

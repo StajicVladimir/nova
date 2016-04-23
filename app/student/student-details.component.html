@@ -1,7 +1,13 @@
  <h2> Dobrodošli u vaš korisnički nalog</h2>
            <span style= "width:200px;">Vaši podatci:</span> <br> 
-           <span style= "width:200px;">Ime i prezime:</span><span style= "width:250px;"> {{trenutniStudent.ime}} {{trenutniStudent.prezime}}</span><br>
-           <span style= "width:200px;">Na odseku:</span> <span>{{trenutniStudent.odsek}}</span><br>
+           <div style="width:300px">
+                  <span style= "display:inline-block; width:50%;weight:bold">Ime i prezime:</span>
+                  <span style= "display:inline-block; width:50% float:right;"> {{trenutniStudent.ime}} {{trenutniStudent.prezime}}</span>
+           </div>
+           <div style ="width: 300px">
+                   <span style= "display:inline-block; width:50%;weight:bold">Na odseku:</span> 
+                   <span style= "display:inline-block; width:50% float:right;">{{trenutniStudent.odsek}}</span>
+           </div>
            <span style= "width:200px;">Adresa:</span> <span>{{trenutniStudent.adresa}}<span><br>
            <span style= "width:200px;">Godina:</span> {{trenutniStudent.godinaStudija}}<br>
            <span style= "width:200px;">Uplaceno:</span> {{trenutniStudent.kredit}}rsd <br>

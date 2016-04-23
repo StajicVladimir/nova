@@ -6,14 +6,14 @@ import {IspitiRokComponent} from './ispiti-rok.component'
 import {Router, RouteParams} from 'angular2/router';
 
 @Component({
-    selector: '<term-list>',
+    selector: 'term-list',
     template:`
         <h3>Spisak rokova u kojima ste bili aktivni: </h3>
         <ul>
             <li *ngFor ="#term of terms"
                 (click) = "onSelectTerm(term)"
             > 
-                {{term.date}}
+                {{term.naziv}}: {{term.datumPocetka}}
             </li>
         </ul>
         
@@ -47,7 +47,8 @@ import {Router, RouteParams} from 'angular2/router';
     providers: [TermService]
 })
 export class TermListComponent implements OnInit{
-    public terms:Term[] =[{id: 1, date:"vlada"}];
+    
+    public terms:Term[] =[{id: 1, datumPocetka:"ucitavam", datumZavrsetka:"ucitavam",naziv:"ucitavam"}];
     private selectedTerm :Term;
     
     constructor(private _router:Router, private _routeParams: RouteParams, private _termService: TermService){}
@@ -56,13 +57,13 @@ export class TermListComponent implements OnInit{
             this._termService.getTerms().subscribe(
             data =>  this.terms = data,
             err => console.error(err),
-            () => console.log('done loading Terms')
+            () => console.log('Ucitao Rokove')
         );
     }
     
     onSelectTerm(term){
         this.selectedTerm=term;
-        this._router.navigate(['TermDetails',{date: this.selectedTerm.date,id:this.selectedTerm.id}]);
+        this._router.navigate(['TermDetails',{date: this.selectedTerm.datumPocetka,id:this.selectedTerm.id}]);
     }
     ngOnInit(){
         this.getTerms();

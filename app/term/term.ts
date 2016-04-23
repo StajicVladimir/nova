@@ -1,5 +1,7 @@
 export class Term{
     id :number;
-    date: String;
+    datumPocetka: string;
+    datumZavrsetka:string;
+    naziv:string; 
     
 }
