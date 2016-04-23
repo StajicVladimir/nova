@@ -1,13 +1,13 @@
- <h2> Dobrodošli u vaš nalog</h2>
-           Vaši podatci: <br> 
-           Ime i prezime: {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>
-           Na odseku: {{trenutniStudent.odsek}}<br>
-           Adresa: {{trenutniStudent.adresa}}<br>
-           Godina: {{trenutniStudent.godinaStudija}}<br>
-           Uplaceno: {{trenutniStudent.kredit}}rsd <br>
-           
-           <button>Izmena ličnih podataka</button>
-           <form #myForm = "ngForm">
+ <h2> Dobrodošli u vaš korisnički nalog</h2>
+           <span style= "width:200px;">Vaši podatci:</span> <br> 
+           <span style= "width:200px;">Ime i prezime:</span><span style= "width:250px;"> {{trenutniStudent.ime}} {{trenutniStudent.prezime}}</span><br>
+           <span style= "width:200px;">Na odseku:</span> <span>{{trenutniStudent.odsek}}</span><br>
+           <span style= "width:200px;">Adresa:</span> <span>{{trenutniStudent.adresa}}<span><br>
+           <span style= "width:200px;">Godina:</span> {{trenutniStudent.godinaStudija}}<br>
+           <span style= "width:200px;">Uplaceno:</span> {{trenutniStudent.kredit}}rsd <br>
+           <div [hidden] = "!changeDataHidden">{{poruka}}</div>
+           <button (click) = "onChangeData()">Izmena ličnih podataka</button>
+           <form [hidden] = "changeDataHidden" #myForm = "ngForm">
                  <div style="width : 250px;">
                     <label for = "ime"> Unesite ime: </label>
                     <input class="form-control" type="text" id="ime" 
@@ -23,4 +23,5 @@
                      <input class="form-control" type="text" id="adresa" 
                       ngControl="adresa" [(ngModel)]="trenutniStudent.adresa" #adresa = "ngForm">
                 </div> 
+                <button (click)= "onPromeni(ime, prezime,adresa)">Promeni</button>
            </form>

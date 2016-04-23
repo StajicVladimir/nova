@@ -12,7 +12,7 @@ import {Observable} from 'rxjs/Rx';
     selector: 'welcome',
     template: `
         
-        <!--<button (click) = "onClick()">dugme</button> -->
+        <!--<button (click) = "onClick()">dugme</button>--> 
        
         <student-details></student-details>
         
@@ -31,9 +31,10 @@ export class WelcomeScreenComponent implements OnInit{
         
     }
     constructor(private _router:Router, private _routeParams: RouteParams, private _http:Http){}
-     public getTerms(){
+    
+    /* public getTerms(){
            this.ime="aaaaaaaaaaaaaaa";
-       let body = "id=9807&ime=opet&prezime=prezime&adresa=adresa";
+       let body = "id=9807&ime=vlada&prezime=heellooo&adresa=adresa";
     let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     let options = new RequestOptions({ headers: headers });
 
@@ -48,7 +49,7 @@ export class WelcomeScreenComponent implements OnInit{
             err => console.error(err),
             () => console.log('done loading Terms')
             );          
-     }  
+     }  */
        
 }
 

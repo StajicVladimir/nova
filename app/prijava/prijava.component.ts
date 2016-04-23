@@ -41,8 +41,8 @@ import {PredmetListComponent} from '../predmet/predmet-list.component';
 })
 export class PrijavaComponent implements OnInit{
     myForm :ControlGroup;
-    trenutniStudent:Student = { id:2, ime:"dfds",prezime:"heeeeee", godinaStudija:4, odsek:5,kredit:3,pass:"vlada"};
-    public terms:Term[] =[{id: 1, date:"vlada"}];
+    trenutniStudent:Student = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:0,kredit:0,pass:"pass", adresa: "adresa"};
+    public terms:Term[] =[{id: 1, date:"ucitavam"}];
     
     constructor(private _formBuilder: FormBuilder, private _studentService: StudentService,
                     private _termService: TermService){}
