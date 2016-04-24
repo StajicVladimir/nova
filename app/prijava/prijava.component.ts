@@ -45,7 +45,7 @@ export class PrijavaComponent implements OnInit{
     myForm :ControlGroup;
     odsekid:number;
     trenutniStudent:Student = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:0,kredit:0,pass:"pass", adresa: "adresa"};
-    public terms:Term[] =[{id: 1, datumPocetka:"ucitavam", datumZavrsetka:"ucitavam", naziv:"ucitavam"}];
+    public terms:Term[] =[{id: 1, datumPocetka:null, datumZavrsetka:null, naziv:"ucitavam"}];
     
     constructor(private _formBuilder: FormBuilder, private _studentService: StudentService,
                     private _termService: TermService){}

@@ -52,13 +52,13 @@ li:hover{
     //directives: [ExamDetailsComponent],
     inputs: ['rokId'],
     providers: [IspitRokService],
-    directives: [IspitiRokDetailsComponent]
+    directives: [IspitiRokDetailsComponent] 
     
 })
 export class IspitiRokComponent implements OnInit {
     @Input()
      rokId:number;  
-    public exams :IspitRok[]=[{nazivPredmeta: "ucitavam", polozio:0,profesor:"ucitavam", datum:"ucitavam"}];
+    public exams :IspitRok[]=[{nazivPredmeta: "ucitavam", polozio:0,profesor:"ucitavam", datum:null}];
     selectedExam :IspitRok = null;
     constructor(private _examService: IspitRokService){}
     

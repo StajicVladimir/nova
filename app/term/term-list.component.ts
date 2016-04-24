@@ -49,7 +49,7 @@ import {Router, RouteParams} from 'angular2/router';
 })
 export class TermListComponent implements OnInit{
     
-    public terms:Term[] =[{id: 1, datumPocetka:"ucitavam", datumZavrsetka:"ucitavam",naziv:"ucitavam"}];
+    public terms:Term[] =[{id: 1, datumPocetka:null, datumZavrsetka:null,naziv:"ucitavam"}];
     private selectedTerm :Term;
     
     constructor(private _router:Router, private _routeParams: RouteParams, private _termService: TermService){}

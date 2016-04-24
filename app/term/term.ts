@@ -1,7 +1,7 @@
 export class Term{
     id :number;
-    datumPocetka: string;
-    datumZavrsetka:string;
+    datumPocetka: Date;
+    datumZavrsetka:Date;
     naziv:string; 
     
 }

@@ -6,6 +6,8 @@ import {StudentDetailsComponent} from './student/student-details.component';
 
 import {Http, Response, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Rx';
+import {DatumService} from './datum.service';
+
 
 
 @Component({
@@ -13,20 +15,38 @@ import {Observable} from 'rxjs/Rx';
     template: `
         
         <!--<button (click) = "onClick()">dugme</button>--> 
-       
+        <!-- <ul>
+            <li *ngFor = "#datum of datumi">
+                {{datum.datum}}
+            </li>
+        </ul>-->
         <student-details></student-details>
         
     `,
-    directives: [StudentDetailsComponent]
+    directives: [StudentDetailsComponent],
+    providers:[DatumService]
 })
 export class WelcomeScreenComponent implements OnInit{
     
-   
+   datumi : Date[];
+   /*str: string;*/
+    da :Date;
+    
+    
     ngOnInit():any{
-        
-        
+            
+       // this.getDatume();
+      
     }
-    constructor(private _router:Router, private _routeParams: RouteParams, private _http:Http){}
+    
+    public getDatume(){
+        this._datumService.getDatume().subscribe(
+            data => { this.datumi = data},
+            err => console.error(err),
+            () => console.log('ucitao datume')
+         );
+    }
+    constructor(private _router:Router, private _routeParams: RouteParams, private _http:Http, private _datumService: DatumService){}
     
    
        
