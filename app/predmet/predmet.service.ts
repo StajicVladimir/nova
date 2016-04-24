@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class PredmetService{
-    private urlPath='http://localhost:8080/RESTfulProject/REST/WebService/SviPredmeti';
+    private urlPath='http://localhost:8080/RESTfulProject/REST/WebService/predmeti';
     constructor (private _http:Http){}
     
     getPredmete (){
@@ -16,10 +16,14 @@ export class PredmetService{
         
          return this._http.get(this.urlPath)
                     .map((res:Response) => res.json());
+                    
     }
-    
+    getPredmet(predmetId:number){
+        return this._http.get(this.urlPath+'/'+predmetId)
+                    .map((res:Response) => res.json());
+    }
     getPredmeteSaOdseka(odsekId:number){
-        return this._http.get(this.urlPath+'/'+odsekId)
+        return this._http.get(this.urlPath+'/odsek/'+odsekId)
                     .map((res:Response) => res.json());
     }
 }

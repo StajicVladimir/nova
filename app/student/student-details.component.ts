@@ -55,7 +55,7 @@ export class StudentDetailsComponent implements OnInit{
    onPromeni(ime, prezime, adresa){
        
        this._studentService.postStudent(this.trenutniStudent.ime, 
-                    this.trenutniStudent.prezime, this.trenutniStudent.adresa).subscribe(
+                    this.trenutniStudent.prezime, this.trenutniStudent.adresa, this.trenutniStudent.kredit).subscribe(
             data =>  this.ime = data,
             err => console.error(err),
             () => console.log('Uneo novog studenta')

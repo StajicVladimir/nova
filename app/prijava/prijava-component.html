@@ -1,19 +1,26 @@
 <h1>Prijava ispita:</h1>
-<h3>Na raspolaganju imate: {{trenutniStudent.kredit}} kredita{{trenutniStudent.odsek}}</h3>
-        
+<h3>Na raspolaganju imate: {{trenutniStudent.kredit}} kredita{{trenutniStudent.odsek}} {{trenutniPredmet.id}}{{trenutniRok}}</h3>
+        <div style="width: 50%; float: right;">
         <form #myForm = "ngForm">
             <!--**************************-->
             <div style="width : 100%; margin:10px 10px 0px 50px; " class="form-group">
                  <div style ="float:right; margin:0% 30% 0% 0% ">
-                    <label  for="rok">Odaberite rok:</label>
-                    <select style="display:inline;" class="form-control"
+                    <label  style ="margin-right: 1px;"for="rok">Odaberite rok:</label>
+                    <select style="display:inline; width: 50%; margin-left: 2px;" class="form-control"
                      ngControl="termDate" #termDate="ngForm" >
-                         <option *ngFor="#term of terms" [value]="term.id">
-                             {{term.datumPocetka}}
+                         <option *ngFor="#term of terms" [value]="term.id" (click) = "onTermSelect(term.id)">
+                             {{term.naziv}} od: {{term.datumPocetka}} do {{term.datumZavrsetka}}
                          </option>
                     </select>
+                        {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>
+                        {{trenutniPredmet.naziv}}
+                       
+                        <button (click) = "onPrijaviIspit()">Prijavi ispit</button>
+                    
                  </div>
             </div>
         </form>  
-        
-        <predmet-list></predmet-list>
+        </div>
+        <div style="width: 50%; float: left;">
+        <predmet-list (predmetSelected)="predmetSelected($event)"></predmet-list>
+        </div>

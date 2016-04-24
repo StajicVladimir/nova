@@ -36,21 +36,19 @@ import {GlobalVarsService} from './global-vars.service';
     
 })
 export class LoginComponent {
+    
     myForm :ControlGroup;
     public studentIndeks:number;
     public lozinka:string;
-    //public lozinka: string;
-    //public user: number;
+   
     student:Student = { id:2, ime:"ime",prezime:"prezime", godinaStudija:4, odsek:5,kredit:3, pass:"pass", adresa:"adresa"};
-    //private id: number;
-    ngOnInit():any{
-       
-      
-    }
+    
+    ngOnInit():any{ }
     
     constructor(private _gVS: GlobalVarsService, private _formBuilder: FormBuilder,
             private _router:Router, private _routeParams: RouteParams, 
             private _studentService: StudentService){}
+            
     public getStud(){
         this._studentService.getStudent().subscribe(
             data =>{this.student = data},
@@ -59,26 +57,19 @@ export class LoginComponent {
         );
       }
       
-    checkLogin(){
+    
+    onLogin(){
+       
+        this._gVS.setStudentId(this.studentIndeks);
+        this.getStud();
+        
         if (this.student.id == this.studentIndeks && this.student.pass == this.lozinka) {
-           this._gVS.setLoggedIn(true);
-        this._gVS.setStudentOdsek(this.student.odsek);
-       
-       this._router.navigate(['Welcome',{name: this.studentIndeks, pass: this.lozinka}]);
-      
-       }else{
-           this._router.navigate(['Login']);
-       }
+            this._gVS.setLoggedIn(true);
+            this._gVS.setStudentOdsek(this.student.odsek);
+            this._router.navigate(['Welcome',{name: this.studentIndeks, pass: this.lozinka}]);
+        }else{
+            this._router.navigate(['Login']);
+        }
     }
-   onLogin(){
-       
-       this._gVS.setStudentId(this.studentIndeks);
-       
-       this.getStud();
-       this.checkLogin();
-       
-       
-      
-   }
-   onSubmit(){}
+   
 }
