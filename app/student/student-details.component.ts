@@ -18,13 +18,19 @@ import {Validators} from 'angular2/common';
 
 export class StudentDetailsComponent implements OnInit{
     
-    public changeDataHidden:boolean = false;
+    public changeDataHidden:boolean = true;
+    public changePassHidden:boolean = true;
     trenutniStudent:Student = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:0,kredit:0, pass:"",adresa:"ulica"};
     odsek:Odsek = {id:0,naziv:"ucitavam"};
     
     myForm :ControlGroup;
+    myformPass: ControlGroup;
     ime:string;
     poruka:string;
+    
+    trenutnaLozinka :string="hej hej";
+    novaLozinka:string="";
+    novaLozinkaCheck:string="";
     
     constructor (private _studentService: StudentService, private _gVS: GlobalVarsService,
                  private _odsekService: OdsekService){}
@@ -50,17 +56,54 @@ export class StudentDetailsComponent implements OnInit{
    }
    
    onChangeData(){
+       this.changePassHidden=true;
        this.changeDataHidden=false;
+       
    }
-   onPromeni(ime, prezime, adresa){
+   onChangePass(){
+       this.changeDataHidden=true;
+   
+       this.changePassHidden=false;
+       this.trenutnaLozinka="";
+       this.novaLozinka="";
+       this.novaLozinkaCheck="";
+   }    
+   onPromeni(){
        
        this._studentService.postStudent(this.trenutniStudent.ime, 
-                    this.trenutniStudent.prezime, this.trenutniStudent.adresa, this.trenutniStudent.kredit).subscribe(
+                    this.trenutniStudent.prezime, this.trenutniStudent.adresa, 
+                    this.trenutniStudent.kredit, this.trenutniStudent.pass).subscribe(
             data =>  this.ime = data,
             err => console.error(err),
             () => console.log('Uneo novog studenta')
             ); 
             this.changeDataHidden = true;
+            this.changePassHidden = true;
             this.poruka="Uspešno ste promenili vaše podatke!!";
+   }
+   onPromeniPass(){
+       
+           console.log("uneta je ispravna lozinka");
+           console.log(this.trenutnaLozinka);
+            console.log(this.novaLozinka);
+            console.log(this.novaLozinkaCheck);
+            if(this.trenutnaLozinka == this.trenutniStudent.pass){
+                console.log("uneta je ispravna lozinka");
+                if(this.novaLozinka == this.novaLozinkaCheck)
+                {
+                    console.log("Sve je ok, spremno za unos");
+                    this.trenutniStudent.pass= this.novaLozinka;
+                    console.log("nova lozinka: " + this.trenutniStudent.pass);
+                    this.onPromeni();
+                }
+            }else{
+                console.log("uneta je pogresna lozinka");
+            }
+   }
+   onOdustaniPodatci(){
+       this.changeDataHidden=true;
+   }
+   onOdustaniPass(){
+       this.changePassHidden=true;
    }
 }

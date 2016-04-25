@@ -24,8 +24,9 @@ export class StudentService{
         this._http.post(this.urlString,JSON.stringify({ime:"nja",prezime:"njanjic", adresa:"njanjava"}),{headers:this.headers})
         .map((res:Response) => res.json());
     }*/
-    postStudent(ime:string, prezime:string, adresa:string, kredit:number){
-        let body = "id="+this._gVS.getStudentId().toString()+"&ime="+ime+"&prezime="+prezime+"&adresa="+adresa+"&kredit="+kredit;
+    postStudent(ime:string, prezime:string, adresa:string, kredit:number, lozinka:string){
+        let body = "id="+this._gVS.getStudentId().toString()+"&ime="+ime+"&prezime="
+                    +prezime+"&adresa="+adresa+"&kredit="+kredit+"&lozinka="+lozinka;
                   //let body = "id=9807&ime=ajsad&prezime=heellooo&adresa=adresa";
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers });

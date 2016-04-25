@@ -1,22 +1,37 @@
- <h2> Dobrodošli u vaš korisnički nalog</h2>
-           <span style= "width:200px;">Vaši podatci:</span> <br> 
-           <div style="width:400px">
-                  <span style= "display:inline-block; width:50%;weight:bold">Ime i prezime:</span>
-                  <span style= "display:inline-block; width:50% float:right;"> {{trenutniStudent.ime}} {{trenutniStudent.prezime}}</span>
+      <h2 style="color :#269;"> Dobrodošli u vaš korisnički nalog</h2>
+            <span style= "width:200px;font-weight:bold;">Vaši podatci:</span> <br> 
+            <div style="width:400px;border-radius: 10px;border: 2px solid #369; border-style: solid;padding:10px;">
+            <div style="width:400px">
+                  <span style= "display:inline-block; width:50%; font-weight:bold;">Ime i prezime:</span>
+                  <span style= "display:inline-block; width:50%; float:right;"> {{trenutniStudent.ime}} {{trenutniStudent.prezime}}</span>
+            </div>
+            <div style ="width: 400px">
+                   <span style= "display:inline-block; width:50%; font-weight:bold;">Na odseku:</span> 
+                   <span style= "display:inline-block; width:50%; float:right;">{{odsek.naziv}}</span>
+            </div>
+            <div style ="width: 400px">
+                  <span style= "display:inline-block; width:50%; font-weight:bold;">Adresa:</span> 
+                  <span style= "display:inline-block; width:50%; float:right;">{{trenutniStudent.adresa}}</span>
            </div>
            <div style ="width: 400px">
-                   <span style= "display:inline-block; width:50%;weight:bold">Na odseku:</span> 
-                   <span style= "display:inline-block; width:50% float:right;">{{odsek.naziv}}</span>
+                  <span style= "display:inline-block; width:50%; font-weight:bold;">Godina:</span> 
+                  <span style= "display:inline-block; width:50%; float:right;">{{trenutniStudent.godinaStudija}}</span>
            </div>
-           <span style= "width:200px;">Adresa:</span> <span>{{trenutniStudent.adresa}}<span><br>
-           <span style= "width:200px;">Godina:</span> {{trenutniStudent.godinaStudija}}<br>
-           <span style= "width:200px;">Uplaceno:</span> {{trenutniStudent.kredit}}rsd <br>
+           <div style ="width: 400px">
+                  <span style= "display:inline-block; width:50%; font-weight:bold;">Uplaceno:</span> 
+                  <span style= "display:inline-block; width:50%; float:right;">{{trenutniStudent.kredit}}rsd</span>
+           </div>
+           </div>
+           {{trenutnaLozinka}}
+           <!-- ************ Promena podataka *********** -->   
            <div [hidden] = "!changeDataHidden">{{poruka}}</div>
-           <button (click) = "onChangeData()">Izmena ličnih podataka</button>
-           <form [hidden] = "changeDataHidden" #myForm = "ngForm">
+            <button style="margin:15px 0px 15px 0px;"(click) = "onChangeData()">Izmena ličnih podataka</button>
+             <button style="margin:15px 0px 15px 0px;"(click) = "onChangePass()">Izmena Lozinke</button>
+           <div style="width:300px;">
+            <form [hidden] = "changeDataHidden" #myForm = "ngForm">
                  <div style="width : 250px;">
-                    <label for = "ime"> Unesite ime: </label>
-                    <input class="form-control" type="text" id="ime" 
+                       <label for = "ime"> Unesite ime: </label>
+                       <input class="form-control" type="text" id="ime" 
                         ngControl="ime" [(ngModel)]="trenutniStudent.ime" #ime = "ngForm">
                   </div>  
                   <div style="width : 250px;">
@@ -29,5 +44,29 @@
                      <input class="form-control" type="text" id="adresa" 
                       ngControl="adresa" [(ngModel)]="trenutniStudent.adresa" #adresa = "ngForm">
                 </div> 
-                <button (click)= "onPromeni(ime, prezime,adresa)">Promeni</button>
+                <button (click)= "onPromeni()">Promeni</button>
+                <button (click) ="onOdustaniPodatci()">Odustani</button>
            </form>
+           <div style="width: 300px;">
+            <!-- *********** Promena Lozinke [(ngModel)]="trenutniStudent.pass"************-->    
+            <div>
+                  <form [hidden] = "changePassHidden" #myFormPass = "ngForm">
+                   <div style="width : 250px;">
+                        
+                        <label for = "trenutnaLozinkaText"> Unesite trenutnu lozinku: </label>
+                        <input class="form-control" type="password" id="trenutnaLozinkaText"
+                         [(ngModel)]="trenutnaLozinka">
+                        
+                        <label for = "novaLozinka"> Unesite Novu Lozinku: </label>
+                        <input class="form-control" type="text" id="novaLozinka"
+                        [(ngModel)]="novaLozinka">
+                         
+                        <label for = "novaLozinkaCheck"> Potvrdite lozinku: </label>
+                        <input class="form-control" type="text" id="novaLozinkaCheck"
+                        [(ngModel)]="novaLozinkaCheck">  
+                   
+                  </div>
+                  <button (click)= "onPromeniPass()">Promeni</button>
+                  <button (click) ="onOdustaniPass()">Odustani</button>
+                  </form>
+            </div>

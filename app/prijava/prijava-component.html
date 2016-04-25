@@ -13,7 +13,9 @@
                          </option>
                     </select>
                         {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>
-                        {{trenutniPredmet.naziv}}
+                        {{trenutniPredmet.naziv}} {{trenutniPredmet.profesor}}<br>
+                        U roku: <br>
+                        Vaš kredit: {{trenutniStudent.kredit}}
                        
                         <button (click) = "onPrijaviIspit()">Prijavi ispit</button>
                     

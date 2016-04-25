@@ -13,12 +13,14 @@ import {PrijavaComponent} from './prijava/prijava.component';
 @Component({
 	selector: 'my-app',
 	template: `
-		
+		<div style="background-color: #269; height: 100%; width: 50%;margin: 0px 0px 0px 0px;padding:10px;
+						border-radius: 10px;border: 2px solid #369;">
+			<h2 style ="color: white;">Online Prijava Ispita</h2>
+		</div>
 		<header>
-		<h2>Online Prijava Ispita</h2>
 			<nav style="margin:0px 50px 0px 50px;">
 				<a [class.disabled]="_gVS.getLoggedIn()"[routerLink] = "['Login']" style ="float:right">Login</a>
-				<a [class.disabled]="!_gVS.getLoggedIn()" style ="float:right" 
+				<a style="margin-right: 5px;"[class.disabled]="!_gVS.getLoggedIn()" style ="float:right" 
 					(click)="onLogout()">Logout</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Main Screen</a>
 				<!--<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>-->
@@ -26,7 +28,7 @@ import {PrijavaComponent} from './prijava/prijava.component';
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Prijava']">Prijava Ispita</a>
 			</nav>
 		</header>
-		<!--{{_gVS.getLoggedIn()}}{{_gVS.getStudentId()}}-->
+		
 		<div style="margin:0px 50px 0px 50px;">
 			
 			<router-outlet></router-outlet>
