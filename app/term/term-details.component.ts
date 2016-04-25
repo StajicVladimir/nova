@@ -8,10 +8,11 @@ import {IspitiRokComponent} from './ispiti-rok.component';
 @Component({
     selector:'term-details',
     template: `
-        <h3>Detalji za {{naziv}} rok od: {{datumPocetka}} do: {{datumZavrsetka}}</h3> 
-        <button (click) = "onBackToTermList()">Back to terms</button>
-            <ispiti-rok [rokId]="id"></ispiti-rok>
-        
+        <h2 style="color :#269;">Detalji za {{naziv}} rok od: {{datumPocetka}} do: {{datumZavrsetka}}</h2>
+            <button (click) = "onBackToTermList()">Nazad na istorijat rokova</button>
+            
+                <ispiti-rok [rokId]="id"></ispiti-rok>
+            
     `,
     directives:[IspitiRokComponent]
 })

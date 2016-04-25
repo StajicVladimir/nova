@@ -1,23 +1,24 @@
-<h1>Prijava ispita:</h1>
-<h3>Na raspolaganju imate: {{trenutniStudent.kredit}} kredita{{trenutniStudent.odsek}} {{trenutniPredmet.id}}{{trenutniRok}}</h3>
+<h2 style="color :#269;">Prijava ispita:</h2>
         <div style="width: 50%; float: right;">
         <form #myForm = "ngForm">
             <!--**************************-->
             <div style="width : 100%; margin:10px 10px 0px 50px; " class="form-group">
-                 <div style ="float:right; margin:0% 30% 0% 0% ">
-                    <label  style ="margin-right: 1px;"for="rok">Odaberite rok:</label>
-                    <select style="display:inline; width: 50%; margin-left: 2px;" class="form-control"
-                     ngControl="termDate" #termDate="ngForm" >
-                         <option *ngFor="#term of terms" [value]="term.id" (click) = "onTermSelect(term.id)">
-                             {{term.naziv}} od: {{term.datumPocetka}} do {{term.datumZavrsetka}}
-                         </option>
-                    </select>
-                        {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>
-                        {{trenutniPredmet.naziv}} {{trenutniPredmet.profesor}}<br>
-                        U roku: <br>
-                        Vaš kredit: {{trenutniStudent.kredit}}
+                 <div style ="border-radius: 10px; background: #eee; border: 2px solid #369;padding: 1em;
+                        float:right; margin:0% 30% 0% 0% ">
+                    <div>
+                        <label  style ="margin-right: 1px;"for="rok">Odaberite rok:</label>
+                        <select style="display:inline; width: 50%; margin-left: 2px;" class="form-control"
+                        ngControl="termDate" #termDate="ngForm" >
+                            <option *ngFor="#term of terms" [value]="term.id" (click) = "onTermSelect(term.id)">
+                                  {{term.naziv}} od: {{term.datumPocetka}} do {{term.datumZavrsetka}}
+                            </option>
+                        </select>
+                    </div>
+                        Ime i Prezime: {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>
+                        Predmet: {{trenutniPredmet.naziv}} <br>Profesor: {{trenutniPredmet.profesor}}<br>
+                        Vaš kredit: {{trenutniStudent.kredit}}<br>
                        
-                        <button (click) = "onPrijaviIspit()">Prijavi ispit</button>
+                        <button style="background-color: #cfd8dc;"(click) = "onPrijaviIspit()">Prijavi ispit</button>
                     
                  </div>
             </div>

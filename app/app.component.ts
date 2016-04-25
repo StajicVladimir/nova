@@ -15,7 +15,7 @@ import {PrijavaComponent} from './prijava/prijava.component';
 	template: `
 		<div style="background-color: #269; height: 100%; width: 50%;margin: 0px 0px 0px 0px;padding:10px;
 						border-radius: 10px;border: 2px solid #369;">
-			<h2 style ="color: white;">Online Prijava Ispita</h2>
+			<h2 style ="color: white;font-weight: bold;">Online Prijava Ispita</h2>
 		</div>
 		<header>
 			<nav style="margin:0px 50px 0px 50px;">

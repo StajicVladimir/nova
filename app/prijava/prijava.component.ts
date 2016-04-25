@@ -49,7 +49,7 @@ import {PredmetListComponent} from '../predmet/predmet-list.component';
 export class PrijavaComponent implements OnInit{
     myForm :ControlGroup;
     odsekid:number;
-    trenutniPredmet: Predmet= {id:3, naziv:"nja", profesor:"Profesor"};
+    trenutniPredmet: Predmet= {id:3, naziv:"odaberite", profesor:"ispit"};
     trenutniStudent:Student = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:0,kredit:0,pass:"pass", adresa: "adresa"};
     trenutniRok : number =8;
     public terms:Term[] =[{id: 1, datumPocetka:null, datumZavrsetka:null, naziv:"ucitavam"}];
@@ -82,7 +82,7 @@ export class PrijavaComponent implements OnInit{
       updateStudentKredit(){
           this.trenutniStudent.kredit = this.trenutniStudent.kredit - 150;
           this._studentService.postStudent(this.trenutniStudent.ime, 
-                    this.trenutniStudent.prezime, this.trenutniStudent.adresa,this.trenutniStudent.kredit).subscribe(
+                    this.trenutniStudent.prezime, this.trenutniStudent.adresa,this.trenutniStudent.kredit,this.trenutniStudent.pass).subscribe(
             data =>  this.ime = data,
             err => console.error(err),
             () => console.log('Uneo novog studenta')

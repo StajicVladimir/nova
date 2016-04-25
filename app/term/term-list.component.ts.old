@@ -8,20 +8,42 @@ import {Router, RouteParams} from 'angular2/router';
 @Component({
     selector: 'term-list',
     template:`
-        <h2 style="color :#269;">Spisak rokova u kojima ste bili aktivni: </h2>
-        <div style= "width: 80%; height: 80%;">
-        <ul >
+        <h3>Spisak rokova u kojima ste bili aktivni: </h3>
+        
+        <ul>
             <li *ngFor ="#term of terms"
                 (click) = "onSelectTerm(term)"
             > 
-                <span style = "font-weight:bold">{{term.naziv | uppercase}}: </span> {{term.datumPocetka}}
+                {{term.naziv}}: {{term.datumPocetka}}
             </li>
         </ul>
-        </div>
+        
         
         
     `,
-    styleUrls:['app/term/term.css'],
+    styles:[`
+        ul{
+            list-style: none;
+            margin: 16px;
+            padding: 0;
+        }
+
+        li{
+            cursor: pointer;
+            transition: padding 0.3s;
+        }
+
+        li:hover{
+             padding-left: 8px;
+             color: #369;
+             font-weight: bold;
+             border-left: 3px solid #369;
+        }
+        .clicked{
+            color: #369;
+             font-weight: bold;
+        }
+    `],
     directives:[IspitiRokComponent],
     providers: [TermService]
 })

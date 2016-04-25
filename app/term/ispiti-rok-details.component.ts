@@ -5,9 +5,9 @@ import {IspitRok} from './ispit-rok';
     selector: 'ispiti-rok-details',
     template:`
         
-         <div style="border-radius: 10px; background: #eee; border: 2px solid #369; padding: 20px; display: inline-block" >
+         <div style="width=600px;border-radius: 10px; background: #eee; border: 2px solid #369; padding: 20px; display: inline-block" >
             <span style= "display:inline-block; width:50%;weight:bold">Ispit:</span>
-            <span >{{exam.nazivPredmeta}}</span><br>
+            <span style ="display:inline-block; width:50%; float:right;">{{exam.nazivPredmeta}}</span><br>
             Kod Profesora: {{exam.profesor}}<br>
             Datum: {{exam.datum}}<br>
             Ocena: {{exam.polozio}}

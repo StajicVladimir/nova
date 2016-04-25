@@ -7,23 +7,26 @@ import {IspitiRokDetailsComponent} from './ispiti-rok-details.component'
 @Component({
     selector: 'ispiti-rok',
     template:`
-       <div> Hello from Ispiti Rok liste</div>
+       <div> <h2>Spisak ispita koje ste polagali u ovom roku:</h2></div>
         <div style="width : 30%; display: inline-block; float: left;" >
        <ul >
             <li *ngFor ="#exam of exams"
                 (click) = "onSelectExam(exam)">
-            
-                {{exam.nazivPredmeta}} polozen: {{exam.polozio}}
+                
+                <div style ="width: 100%">
+                   <span style= "display:inline-block; width:50%; font-weight:bold;">{{exam.nazivPredmeta}}</span> 
+                   <span style= "display:inline-block; width:50%; float:right;">Ocena: {{exam.polozio}}</span>
+                 </div>
+                 
                 
                 
             </li>
        </ul>
        </div>
        
-      <div style = "width : 70%;height: 500px display: inline-block;">
-      <ispiti-rok-details *ngIf = "selectedExam !== null" [exam] = "selectedExam" ></ispiti-rok-details>
-      </div>
-             
+      <!--<div style = "width : 70%;height: 500px display: inline-block;">--> 
+            <ispiti-rok-details *ngIf = "selectedExam !== null" [exam] = "selectedExam" ></ispiti-rok-details>
+      <!--</div>-->             
       
     `,
     styles: [`
@@ -48,6 +51,7 @@ li:hover{
     color: #369;
     font-weight: bold;
 }
+
     `],
     //directives: [ExamDetailsComponent],
     inputs: ['rokId'],
