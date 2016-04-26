@@ -3,18 +3,18 @@ import {ControlGroup} from 'angular2/common';
 import {FormBuilder} from 'angular2/common';
 import {Validators} from 'angular2/common';
 
-import {Student} from './student/student';
-import {StudentService} from './student/student.service';
+import {Student} from '../student/student';
+import {StudentService} from '../student/student.service';
 
 import {Router, RouteParams} from 'angular2/router';
-import {GlobalVarsService} from './global-vars.service';
+import {GlobalVarsService} from '../global-vars.service';
 
 
 
 
 @Component({
     selector: 'login',
-    templateUrl:'./app/login.component.html',
+    templateUrl:'res/html/login/login.component.html',
     styles:[`
          label{
             display: inline-block;

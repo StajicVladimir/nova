@@ -6,18 +6,31 @@
                  <div style ="border-radius: 10px; background: #eee; border: 2px solid #369;padding: 1em;
                         float:right; margin:0% 30% 0% 0% ">
                     <div>
-                        <label  style ="margin-right: 1px;"for="rok">Odaberite rok:</label>
-                        <select style="display:inline; width: 50%; margin-left: 2px;" class="form-control"
+                        <!--<label  style ="margin-right: 1px;"for="rok">Rok:</label>-->
+                        <span style="font-weight:bold;">Rok:</span> 
+                        <select style="display:inline; width: 80%; margin-left: 2px; height: 2em;" class="form-control"
                         ngControl="termDate" #termDate="ngForm" >
                             <option *ngFor="#term of terms" [value]="term.id" (click) = "onTermSelect(term.id)">
                                   {{term.naziv}} od: {{term.datumPocetka}} do {{term.datumZavrsetka}}
                             </option>
                         </select>
                     </div>
-                        Ime i Prezime: {{trenutniStudent.ime}} {{trenutniStudent.prezime}}<br>
-                        Predmet: {{trenutniPredmet.naziv}} <br>Profesor: {{trenutniPredmet.profesor}}<br>
-                        Vaš kredit: {{trenutniStudent.kredit}}<br>
-                       
+                        <div>
+                            <span style="font-weight:bold;">Ime i Prezime: </span>
+                            <span>{{trenutniStudent.ime}} {{trenutniStudent.prezime}}</span>
+                        </div>
+                        <div>
+                            <span style="font-weight:bold;">Predmet: </span>
+                            <span>{{trenutniPredmet.naziv}} </span>
+                         </div>   
+                           <div>
+                               <span style="font-weight:bold;">Profesor: </span>
+                               <span>{{trenutniPredmet.profesor}}</span>
+                           </div>
+                           <div>
+                                <span style="font-weight: bold;">Vaš kredit: </span>
+                                <span>{{trenutniStudent.kredit}}</span>
+                       </div>
                         <button style="background-color: #cfd8dc;"(click) = "onPrijaviIspit()">Prijavi ispit</button>
                     
                  </div>

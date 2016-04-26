@@ -11,7 +11,7 @@ export class TermService{
     private urlPath='http://localhost:8080/RESTfulProject/REST/WebService/rokovi/';
     constructor (private _http:Http, private _gVS:GlobalVarsService){}
     
-    getTerms (){
+    getPastTerms (){
         
         this.urlPath = this.urlPath + 'student/'+this._gVS.getStudentId().toString();
          return this._http.get(this.urlPath)

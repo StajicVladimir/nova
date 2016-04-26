@@ -23,25 +23,8 @@ import {PredmetListComponent} from '../predmet/predmet-list.component';
 @Component({
     selector:'prijava-component',
     
-    templateUrl :'../app/prijava/prijava-component.html',
-    
-    styles:[`
-         label{
-            display: inline-block;
-            width: 140px;
-        }
-        input {
-            width: 250px;
-            margin: 10px 10px 0px 50px;
-        }
-        label{
-             margin:10px 10px 0px 50px;
-        }
-        button{
-           margin:10px 10px 0px 50px;
-        }
-             
-    `],
+    templateUrl :'res/html/prijava/prijava-component.html',
+    styleUrls:['res/css/prijava.css'],
     providers: [StudentService,TermService, IspitService, PredmetService],
     directives:[PredmetListComponent]
     

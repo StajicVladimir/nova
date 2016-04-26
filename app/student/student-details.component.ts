@@ -12,7 +12,7 @@ import {Validators} from 'angular2/common';
 
 @Component({
     selector: 'student-details',
-    templateUrl:'../app/student/student-details.component.html',
+    templateUrl:'res/html/student/student-details.component.html',
     providers: [StudentService, OdsekService]
 })
 

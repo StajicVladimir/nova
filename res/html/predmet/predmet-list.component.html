@@ -1,0 +1,7 @@
+ <h3>Spisak predmeta dostupnih za prijavu:</h3>
+        
+        <ul>
+            <li *ngFor = "#predmet of predmeti" (click) = "onPredmetSelected(predmet)">
+                <span style="font-weight:bold">{{predmet.naziv}}</span>, profesor: {{predmet.profesor}}
+            </li>
+        </ul>

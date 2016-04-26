@@ -6,18 +6,18 @@ import {IspitiRokComponent} from './ispiti-rok.component';
 
 
 @Component({
-    selector:'term-details',
-    templateUrl:'res/html/term/term-details.component.html',
+    selector:'future-terms-details',
+    templateUrl:'res/html/term/future-terms-details.component.html',
     directives:[IspitiRokComponent]
 })
-export class TermDetailsComponent implements OnInit{
-   
+export class FutureTermsDetailsComponent implements OnInit{
+   // public term: Term;
    datumPocetka:string;
    datumZavrsetka:string;
    naziv:string;
    id: number;
    
-   
+   //temp:Date;
 
     constructor(private _router:Router, private _routeParams: RouteParams){}
   
@@ -29,6 +29,6 @@ ngOnInit():any{
         this.naziv = this._routeParams.get("naziv");
     }
     onBackToTermList(){
-        this._router.navigate(['Terms']);
+        this._router.navigate(['FutureTerms']);
     }
 }

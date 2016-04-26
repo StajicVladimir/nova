@@ -1,14 +1,15 @@
 import {Component, OnInit} from 'angular2/core';
 import {ROUTER_DIRECTIVES,Router} from 'angular2/router';
 import{RouteConfig} from 'angular2/router';
-import {WelcomeScreenComponent} from './welcome-screen.component';
-import {LoginComponent} from './login.component';
+import {WelcomeScreenComponent} from './welcome/welcome-screen.component';
+import {LoginComponent} from './login/login.component';
 
 import {TermListComponent} from './term/term-list.component';
 import {TermDetailsComponent} from './term/term-details.component';
 import {GlobalVarsService} from './global-vars.service';
 import {PrijavaComponent} from './prijava/prijava.component';
-
+import {FutureTermsComponent} from './term/future-terms.component';
+import {FutureTermsDetailsComponent} from './term/future-terms-details.component';
 
 @Component({
 	selector: 'my-app',
@@ -25,6 +26,7 @@ import {PrijavaComponent} from './prijava/prijava.component';
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Main Screen</a>
 				<!--<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>-->
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Istorijat Rokova</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['FutureTerms']">Buduci Rokovi</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Prijava']">Prijava Ispita</a>
 			</nav>
 		</header>
@@ -61,7 +63,9 @@ import {PrijavaComponent} from './prijava/prijava.component';
 	//{path : '/History', name: 'History', component: HistoryComponent},
 	{path : '/Terms', name: 'Terms', component: TermListComponent},
 	{path : '/TermDetails', name: 'TermDetails', component: TermDetailsComponent},
-	{path : '/Prijava', name: 'Prijava', component: PrijavaComponent}
+	{path : '/Prijava', name: 'Prijava', component: PrijavaComponent},
+	{path : '/FutureTerms', name: 'FutureTerms', component:FutureTermsComponent},
+	{path: '/FutureTermsDetails', name: 'FutureTermsDetails', component:FutureTermsDetailsComponent}
 ])
 export class AppComponent
 {	

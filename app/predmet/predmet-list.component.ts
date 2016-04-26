@@ -8,18 +8,10 @@ import {GlobalVarsService} from '../global-vars.service'
 
 @Component({
     selector: 'predmet-list',
-    template:`
-        <h3>Spisak predmeta dostupnih za prijavu:</h3>
-        
-        <ul>
-            <li *ngFor = "#predmet of predmeti" (click) = "onPredmetSelected(predmet)">
-                {{predmet.naziv}} profesor: {{predmet.profesor}}
-            </li>
-        </ul>
-    `,
+    templateUrl: 'res/html/predmet/predmet-list.component.html',
     styles:[`
         ul{
-            list-style: none;
+            list-style: none;   
             margin: 16px;
             padding: 0;
         }

@@ -1,0 +1,10 @@
+<h2 style="color :#269;">Spisak rokova u kojima ste bili aktivni: </h2>
+        <div style= "width: 80%; height: 80%;">
+        <ul >
+            <li *ngFor ="#term of terms"
+                (click) = "onSelectTerm(term)"
+            > 
+                <span style = "font-weight:bold">{{term.naziv | uppercase}}: </span> {{term.datumPocetka}}
+            </li>
+        </ul>
+        </div>
