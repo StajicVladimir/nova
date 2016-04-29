@@ -18,7 +18,13 @@ export class StudentService{
         return this._http.get(this.urlString)
         .map((res:Response) => res.json());
     }
-
+    
+    getStudentId(id:number){
+        this.urlString = this.urlString + id.toString();
+        //let url = this.urlString + this._gVS.getStudentId().toString();
+        return this._http.get(this.urlString)
+        .map((res:Response) => res.json());
+    }
     postStudent(ime:string, prezime:string, adresa:string, kredit:number, lozinka:string){
         let body = "id="+this._gVS.getStudentId().toString()+"&ime="+ime+"&prezime="
                     +prezime+"&adresa="+adresa+"&kredit="+kredit+"&lozinka="+lozinka;

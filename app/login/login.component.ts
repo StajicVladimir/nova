@@ -41,7 +41,7 @@ export class LoginComponent {
     public studentIndeks:number;
     public lozinka:string;
     
-    student:Student = { id:2, ime:"ime",prezime:"prezime", godinaStudija:4, odsek:5,kredit:3, pass:"pass", adresa:"adresa"};
+    student:Student = { id:null, ime:"ime",prezime:"prezime", godinaStudija:4, odsek:5,kredit:3, pass:"pass", adresa:"adresa"};
     
     ngOnInit():any{ }
     
@@ -62,7 +62,13 @@ export class LoginComponent {
     onLogin(){
        
         this._gVS.setStudentId(this.studentIndeks);
-        this.getStud();
+        //this.getStud();
+        
+        this._studentService.getStudent().subscribe(
+            data =>{this.student = data},
+            err =>console.error(err),
+            ()=>console.log('done loading students')  
+        );
         
         console.log(this.student.id);
         if(this.student.id == 2){
