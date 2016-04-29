@@ -8,7 +8,7 @@ import {GlobalVarsService} from '../global-vars.service';
 
 @Injectable()
 export class TermService{
-    private urlPath='http://localhost:8080/RESTfulProject/REST/WebService/rokovi/';
+    private urlPath='http://ec2-52-28-138-105.eu-central-1.compute.amazonaws.com:8080/RESTfulProject/REST/WebService/rokovi/';
     constructor (private _http:Http, private _gVS:GlobalVarsService){}
     
     getPastTerms (){
@@ -22,7 +22,7 @@ export class TermService{
     }
     getFutureTerms(){
         
-         return this._http.get('http://localhost:8080/RESTfulProject/REST/WebService/buducirokovi/')
+         return this._http.get('http://ec2-52-28-138-105.eu-central-1.compute.amazonaws.com:8080/RESTfulProject/REST/WebService/buducirokovi/')
                     .map((res:Response) => res.json());
     }
 }

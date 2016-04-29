@@ -3,6 +3,6 @@
             <span style ="display:inline-block; width:50%; float:right;">{{exam.nazivPredmeta}}</span><br>
             Kod Profesora: {{exam.profesor}}<br>
             Datum: {{exam.datum}}<br>
-            Ocena: {{exam.polozio}}
+            Ocena: {{exam.polozio<6? ocena : exam.polozio}}
             
         </div>

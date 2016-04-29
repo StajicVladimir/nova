@@ -6,6 +6,15 @@ import {IspitRok} from './ispit-rok';
     templateUrl:'res/html/term/ispiti-rok-details.component.html',
     inputs:["exam"]
 })
-export class IspitiRokDetailsComponent{
+export class IspitiRokDetailsComponent {
+    ocena:string = "ispit nije polozen";
+    /*private exam;
     
+    ngOnInit(){
+        if(this.exam.polozio < 6){
+            this.ocena = "Ispit nije položen"
+        }else{
+            this.ocena = this.exam.polozio;
+        }
+    }*/
 }

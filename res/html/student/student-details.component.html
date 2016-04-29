@@ -47,26 +47,46 @@
                 <button (click)= "onPromeni()">Promeni</button>
                 <button (click) ="onOdustaniPodatci()">Odustani</button>
            </form>
-           <div style="width: 300px;">
+           
             <!-- *********** Promena Lozinke [(ngModel)]="trenutniStudent.pass"************-->    
-            <div>
+            <div style="width: 500px;">
                   <form [hidden] = "changePassHidden" #myFormPass = "ngForm">
-                   <div style="width : 250px;">
+                   <div style="width : 100%;">
+                        <div style="width: 500px;">
+                              <div style= "width: 50%; float: left; display: inline-block;">
+                                    <label for = "trenutnaLozinkaText"> Unesite trenutnu lozinku: </label>
+                                    <input  class="form-control" type="password" id="trenutnaLozinkaText"
+                                     [(ngModel)]="trenutnaLozinka">
+                               </div>
+                                <div style= "width: 50%;  display: inline-block;float: right;">
+                                    <span style="width : 50%; margin:10px 10px 0px 50px; float: right;" [hidden]="trenutnaLozinka == trenutniStudent.pass || changePassHidden" 
+                                           class="alert alert-danger">
+                                                Obavezno uneti lozinku
+                                     </span>
+                              </div>
+                        </div>
+                        <div style = "width:50%;">
+                              <label for = "novaLozinka"> Unesite Novu Lozinku: </label>
+                              <input  [disabled] = "!(trenutnaLozinka==trenutniStudent.pass)" 
+                                         class="form-control" type="text" id="novaLozinka"
+                                         ngControl = "novaLozinka"
+                                      [(ngModel)]="novaLozinka" required>
+                         </div>
                         
-                        <label for = "trenutnaLozinkaText"> Unesite trenutnu lozinku: </label>
-                        <input class="form-control" type="password" id="trenutnaLozinkaText"
-                         [(ngModel)]="trenutnaLozinka">
-                        
-                        <label for = "novaLozinka"> Unesite Novu Lozinku: </label>
-                        <input class="form-control" type="text" id="novaLozinka"
-                        [(ngModel)]="novaLozinka">
-                         
-                        <label for = "novaLozinkaCheck"> Potvrdite lozinku: </label>
-                        <input class="form-control" type="text" id="novaLozinkaCheck"
-                        [(ngModel)]="novaLozinkaCheck">  
-                   
+                         <div style = "width:50%;">
+                              <label for = "novaLozinkaCheck"> Potvrdite lozinku: </label>
+                              <input [disabled] = "!(trenutnaLozinka==trenutniStudent.pass)"
+                                     class="form-control" type="text" id="novaLozinkaCheck"
+                                     ngControl = "novaLozinkaCheck"
+                                    [(ngModel)]="novaLozinkaCheck"  required>  
+                        </div>
                   </div>
-                  <button (click)= "onPromeniPass()">Promeni</button>
+                  <button [disabled] = "!(novaLozinka==novaLozinkaCheck) || 
+                                        !(trenutnaLozinka == trenutniStudent.pass)
+                                       || !myFormPass.valid"
+                                          (click)= "onPromeniPass()">Promeni</button>
                   <button (click) ="onOdustaniPass()">Odustani</button>
                   </form>
+                  
+                   
             </div>

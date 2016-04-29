@@ -18,6 +18,8 @@ import {IspitiRokDetailsComponent} from './ispiti-rok-details.component'
 export class IspitiRokComponent implements OnInit {
     @Input()
      rokId:number;  
+     public polozen: string = "Ocena: ";
+     public nijePolozen: string = "Nije položen"; 
     public exams :IspitRok[]=[{nazivPredmeta: "ucitavam", polozio:0,profesor:"ucitavam", datum:null}];
     selectedExam :IspitRok = null;
     constructor(private _examService: IspitRokService){}

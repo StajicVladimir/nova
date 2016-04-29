@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Rx';
 
 @Injectable()
 export class PredmetService{
-    private urlPath='http://localhost:8080/RESTfulProject/REST/WebService/predmeti';
+    private urlPath='http://ec2-52-28-138-105.eu-central-1.compute.amazonaws.com:8080/RESTfulProject/REST/WebService/predmeti';
     constructor (private _http:Http){}
     
     getPredmete (){

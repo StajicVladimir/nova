@@ -5,8 +5,8 @@
                 (click) = "onSelectExam(exam)">
                 
                 <div style ="width: 100%">
-                   <span style= "display:inline-block; width:80%; font-weight:bold;">{{exam.nazivPredmeta}}</span> 
-                   <span style= "display:inline-block; width:20%; float:right;">Ocena: {{exam.polozio}}</span>
+                   <span style= "display:inline-block; width:70%; font-weight:bold;">{{exam.nazivPredmeta}}</span> 
+                   <span style= "display:inline-block; width:30%; float:right;">{{exam.polozio<6? nijePolozen : polozen+exam.polozio}}</span>
                  </div>
                  
                 

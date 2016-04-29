@@ -18,6 +18,7 @@ import {Validators} from 'angular2/common';
 
 export class StudentDetailsComponent implements OnInit{
     
+    public proba : boolean = true;
     public changeDataHidden:boolean = true;
     public changePassHidden:boolean = true;
     trenutniStudent:Student = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:0,kredit:0, pass:"",adresa:"ulica"};
