@@ -8,7 +8,7 @@ import {GlobalVarsService} from '../global-vars.service';
 
 @Injectable()
 export class IspitRokService{
-    private urlPath='http://ec2-52-28-138-105.eu-central-1.compute.amazonaws.com:8080/RESTfulProject/REST/WebService/RokIspiti/';
+    private urlPath='http://localhost:8080/RESTfulProject/REST/WebService/RokIspiti/';
     constructor (private _http:Http, private _gVS:GlobalVarsService){}
     
     getIspitRok (rokId:number){

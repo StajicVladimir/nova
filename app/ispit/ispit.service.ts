@@ -8,10 +8,10 @@ import {GlobalVarsService} from '../global-vars.service';
 
 @Injectable()
 export class IspitService{
-    private urlPath='http://ec2-52-28-138-105.eu-central-1.compute.amazonaws.com:8080/RESTfulProject/REST/WebService/ispiti/';
+    private urlPath='http://localhost:8080/RESTfulProject/REST/WebService/ispiti/';
     constructor (private _http:Http, public _gVS : GlobalVarsService){}
     
-     pushIspit(predmet:number, rok:number, ocena:number, datum:string){
+     putIspit(predmet:number, rok:number, ocena:number, datum:string){
          console.log('u push ispit');
         let body = "studentId="+this._gVS.getStudentId().toString()+"&predmet="+predmet
                     +"&rok="+rok+"&ocena="+ocena+"&datum="+datum;

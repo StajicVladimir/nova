@@ -1,5 +1,5 @@
       <h2 style="color :#269;"> Dobrodošli u vaš korisnički nalog</h2>
-            <span style= "width:200px;font-weight:bold;">Vaši podatci:</span> <br> 
+            <span style= "width:200px;font-weight:bold;">Vaši podaci:</span> <br> 
             <div style="width:400px;border-radius: 10px;border: 2px solid #369; border-style: solid;padding:10px;">
             <div style="width:400px">
                   <span style= "display:inline-block; width:50%; font-weight:bold;">Ime i prezime:</span>
@@ -52,11 +52,12 @@
             <div style="width: 500px;">
                   <form [hidden] = "changePassHidden" #myFormPass = "ngForm">
                    <div style="width : 100%;">
-                        <div style="width: 500px;">
+                        <div style="width: 100%;">
                               <div style= "width: 50%; float: left; display: inline-block;">
                                     <label for = "trenutnaLozinkaText"> Unesite trenutnu lozinku: </label>
                                     <input  class="form-control" type="password" id="trenutnaLozinkaText"
-                                     [(ngModel)]="trenutnaLozinka">
+                                                ngControl = "trenutnaLozinka"
+                                     [(ngModel)]="trenutnaLozinka" required>
                                </div>
                                 <div style= "width: 50%;  display: inline-block;float: right;">
                                     <span style="width : 50%; margin:10px 10px 0px 50px; float: right;" [hidden]="trenutnaLozinka == trenutniStudent.pass || changePassHidden" 
@@ -65,6 +66,7 @@
                                      </span>
                               </div>
                         </div>
+                        
                         <div style = "width:50%;">
                               <label for = "novaLozinka"> Unesite Novu Lozinku: </label>
                               <input  [disabled] = "!(trenutnaLozinka==trenutniStudent.pass)" 
@@ -86,6 +88,7 @@
                                        || !myFormPass.valid"
                                           (click)= "onPromeniPass()">Promeni</button>
                   <button (click) ="onOdustaniPass()">Odustani</button>
+                  <span [hidden] = "(novaLozinka == novaLozinkaCheck)"> Lozinke nisu iste</span>
                   </form>
                   
                    

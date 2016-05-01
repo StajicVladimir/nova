@@ -20,8 +20,8 @@ import {FutureTermsDetailsComponent} from './term/future-terms-details.component
 		</div>
 		<header>
 			<nav style="margin:0px 50px 0px 50px;">
-				<a [class.disabled]="_gVS.getLoggedIn()"[routerLink] = "['Login']" style ="float:right">Login</a>
-				<a style="margin-right: 5px;"[class.disabled]="!_gVS.getLoggedIn()" style ="float:right" 
+				<a [hidden]= "_gVS.getLoggedIn()" [class.disabled]="_gVS.getLoggedIn()"[routerLink] = "['Login']" style ="float:right">Login</a>
+				<a [hidden]= "!_gVS.getLoggedIn()" style="margin-right: 5px;"[class.disabled]="!_gVS.getLoggedIn()" style ="float:right" 
 					(click)="onLogout()">Logout</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Main Screen</a>
 				<!--<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>-->
@@ -71,7 +71,7 @@ export class AppComponent
 {	
 	loggedIn: boolean;
 	constructor (private _gVS : GlobalVarsService, private _router:Router){
-		this.loggedIn = _gVS.getLoggedIn();
+		//this.loggedIn = _gVS.getLoggedIn();
 	}
 	public onLogout(){
 		this._gVS.setLoggedIn(false);

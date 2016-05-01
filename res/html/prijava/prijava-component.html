@@ -10,7 +10,8 @@
                         <span style="font-weight:bold;">Rok:</span> 
                         <select style="display:inline; width: 80%; margin-left: 2px; height: 2em;" class="form-control"
                         ngControl="termDate" #termDate="ngForm" >
-                            <option *ngFor="#term of terms" [value]="term.id" (click) = "onTermSelect(term.id)">
+                            <option>Odaberite rok</option>
+                            <option *ngFor="#term of terms" (click) = "onTermSelect(term.id)">
                                   {{term.naziv}} od: {{term.datumPocetka}} do {{term.datumZavrsetka}}
                             </option>
                         </select>
@@ -31,9 +32,15 @@
                                 <span style="font-weight: bold;">Vaš kredit: </span>
                                 <span>{{trenutniStudent.kredit}}</span>
                        </div>
-                        <button style="background-color: #cfd8dc;"(click) = "onPrijaviIspit()">Prijavi ispit</button>
-                    
+                       
+                        <button [hidden] ="potvrda" style="background-color: #cfd8dc;"(click) = "onPrijaviIspit()">Prijavi ispit</button>
+                        <div [hidden] = "!potvrda"> 
+                            <label >Da li ste sigurni?</label>
+                            <button (click)="onPotvrdi()">Potvrdi</button>
+                            <button (click) = "onOtkazi()">Otkaži</button>
+                        </div>
                  </div>
+                 <span>{{poruka}}</span>
             </div>
         </form>  
         </div>
