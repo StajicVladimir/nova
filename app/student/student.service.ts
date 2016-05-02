@@ -8,7 +8,7 @@ import {GlobalVarsService} from '../global-vars.service';
 
 @Injectable()
 export class StudentService{
-    urlString :string = 'http://ec2-52-28-138-105.eu-central-1.compute.amazonaws.com:8080/RESTfulProject/REST/WebService/Students/';//PAZI NA POSLEDNJI /!!!!!
+    urlString :string = 'http://localhost:8080/RESTfulProject/REST/WebService/Students/';//PAZI NA POSLEDNJI /!!!!!
     constructor (private _http:Http,private _gVS : GlobalVarsService){}
     headers:Headers;
   getStudent(){
@@ -28,11 +28,13 @@ export class StudentService{
     postStudent(ime:string, prezime:string, adresa:string, kredit:number, lozinka:string){
         let body = "id="+this._gVS.getStudentId().toString()+"&ime="+ime+"&prezime="
                     +prezime+"&adresa="+adresa+"&kredit="+kredit+"&lozinka="+lozinka;
-                  //let body = "id=9807&ime=ajsad&prezime=heellooo&adresa=adresa";
-        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+                  //let body = "id=9807&ime=ajsad&prezime=heellooo&adresa=adresa";*/
+                  let  id = this._gVS.getStudentId().toString();
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' });
+        //let body = JSON.stringify({id,ime,prezime,adresa,kredit,lozinka});
         let options = new RequestOptions({ headers: headers });
-
-        return this._http.post('http://ec2-52-28-138-105.eu-central-1.compute.amazonaws.com:8080/RESTfulProject/REST/WebService/Students/', body, options)
+        console.log(body);
+        return this._http.post('http://localhost:8080/RESTfulProject/REST/WebService/Students/', body, options)
                     .map((res:Response) => res.json());
     }
    
