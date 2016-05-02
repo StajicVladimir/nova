@@ -26,4 +26,8 @@ export class PredmetService{
         return this._http.get(this.urlPath+'/odsek/'+odsekId)
                     .map((res:Response) => res.json());
     }
+    getPredmeteZaPrijavu(odsekId:number, studentId:number, rokId: number){
+         return this._http.get('http://ec2-52-28-138-105.eu-central-1.compute.amazonaws.com:8080/RESTfulProject/REST/WebService/predmeti'+'/'+odsekId+','+studentId+','+rokId)
+                    .map((res:Response) => res.json());
+    }
 }

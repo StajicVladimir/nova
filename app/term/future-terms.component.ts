@@ -19,7 +19,7 @@ export class FutureTermsComponent{
     constructor(private _router:Router, private _routeParams: RouteParams, private _termService: TermService){}
     
     public getTerms(){
-            this._termService.getFutureTerms().subscribe(
+            this._termService.getAllFutureTerms().subscribe(
             data =>  this.terms = data,
             err => console.error(err),
             () => console.log('Ucitao Rokove')

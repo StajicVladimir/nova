@@ -5,27 +5,23 @@ import {Term} from './term';
 import {TermService} from './term.service';
 import {FutureTermsDetailsComponent} from './future-terms-details.component';
 
+import {ProbaPrijaveComponent} from '../predmet/proba-prijave.component';
 @Component({
     selector:'all-future-terms',
-    template:`
-        <h2 style="color :#269;">Spisak narednih rokova: </h2>
-        <div style= "width: 80%; height: 80%;">
-        <ul >
-            <li *ngFor ="#term of terms"> 
-                <span style = "font-weight:bold">{{term.naziv | uppercase}}: </span> 
-                {{term.datumPocetka}} {{term.datumZavrsetka}}
-            </li>
-        </ul>
-        </div>
-    `,
+    templateUrl:'res/html/term/all-future-terms.component.html',
     styleUrls:['res/css/term.css'],
-    providers:[TermService]
+    providers:[TermService],
+    directives:[ProbaPrijaveComponent]
 })
 
 export class AllFutureTermsComponent{
      public terms:Term[] =[{id: 1, datumPocetka:null, datumZavrsetka:null,naziv:"ucitavam"}];
-    
-    
+        public trenutniRokId = 0;
+        public trenutniRokNaziv ="";
+        public trenutniRokPocetak:string ="";
+        public trenutniRokZavrsetak:string ="";
+        public termNotSelected:boolean = true;
+        
     constructor(private _router:Router, private _routeParams: RouteParams, private _termService: TermService){}
     
     public getTerms(){
@@ -36,8 +32,20 @@ export class AllFutureTermsComponent{
         );
     }
     
+    onTermSelected(term){
+        this.trenutniRokId = term.id;
+        this.trenutniRokNaziv = term.naziv;
+        this.trenutniRokPocetak = term.datumPocetka;
+        this.trenutniRokZavrsetak = term.datumZavrsetka;
+        this.termNotSelected = false;
+    }
     
+    goToPrijava(){
+        this._router.navigate(['Prijava', { rokId: this.trenutniRokId, rokNaziv:  this.trenutniRokNaziv,
+                rokPocetak: this.trenutniRokPocetak, rokZavrsetak: this.trenutniRokZavrsetak }])
+    }
     ngOnInit(){
         this.getTerms();
+        this.termNotSelected=true;
     }
 }

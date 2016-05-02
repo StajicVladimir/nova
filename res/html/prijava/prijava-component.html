@@ -1,49 +1,48 @@
 <h2 style="color :#269;">Prijava ispita:</h2>
-        <div style="width: 50%; float: right;">
-        <form #myForm = "ngForm">
-            <!--**************************-->
-            <div style="width : 100%; margin:10px 10px 0px 50px; " class="form-group">
-                 <div style ="border-radius: 10px; background: #eee; border: 2px solid #369;padding: 1em;
-                        float:right; margin:0% 30% 0% 0% ">
-                    <div>
-                        <!--<label  style ="margin-right: 1px;"for="rok">Rok:</label>-->
-                        <span style="font-weight:bold;">Rok:</span> 
-                        <select style="display:inline; width: 80%; margin-left: 2px; height: 2em;" class="form-control"
-                        ngControl="termDate" #termDate="ngForm" >
-                            <option>Odaberite rok</option>
-                            <option *ngFor="#term of terms" (click) = "onTermSelect(term.id)">
-                                  {{term.naziv}} od: {{term.datumPocetka}} do {{term.datumZavrsetka}}
-                            </option>
-                        </select>
-                    </div>
-                        <div>
-                            <span style="font-weight:bold;">Ime i Prezime: </span>
-                            <span>{{trenutniStudent.ime}} {{trenutniStudent.prezime}}</span>
-                        </div>
-                        <div>
-                            <span style="font-weight:bold;">Predmet: </span>
-                            <span>{{trenutniPredmet.naziv}} </span>
-                         </div>   
-                           <div>
-                               <span style="font-weight:bold;">Profesor: </span>
-                               <span>{{trenutniPredmet.profesor}}</span>
-                           </div>
-                           <div>
-                                <span style="font-weight: bold;">Vaš kredit: </span>
-                                <span>{{trenutniStudent.kredit}}</span>
-                       </div>
-                       
-                        <button [hidden] ="potvrda" style="background-color: #cfd8dc;"(click) = "onPrijaviIspit()">Prijavi ispit</button>
-                        <div [hidden] = "!potvrda"> 
-                            <label >Da li ste sigurni?</label>
-                            <button (click)="onPotvrdi()">Potvrdi</button>
-                            <button (click) = "onOtkazi()">Otkaži</button>
-                        </div>
-                 </div>
-                 <span>{{poruka}}</span>
+<div style="width: 60%; float: right;">
+	<form #myForm = "ngForm" *ngIf="active">
+		
+		<div style="width : 100%; margin:10px 10px 0px 10px; " class="form-group">
+			<div style ="border-radius: 10px; background: #eee; border: 2px solid #369;padding: 0.5em;
+                        float:right; margin:0% 40% 0% 0% ">
+				<span><h3>Vaša prijava:</h3></span>
+                <div >
+					<span style="font-weight:bold;">Rok:</span> 
+					<span>{{probaRokNaziv}} od {{probaRokPocetak}} do {{probaRokZavrsetak}}</span>
+				</div>
+                <div>
+                    <span style="font-weight:bold;">Ime i Prezime: </span>
+                    <span>{{trenutniStudent.ime}} {{trenutniStudent.prezime}}</span>
+                </div>
+                <div>
+                    <span style="font-weight:bold;">Predmet: </span>
+                    <span>{{trenutniPredmet.naziv}} </span>
+                </div>   
+                <div>
+                    <span style="font-weight:bold;">Profesor: </span>
+                    <span>{{trenutniPredmet.profesor}}</span>
+                </div>
+                <div>
+                    <span style="font-weight: bold;">Vaš kredit: </span>
+                    <span>{{trenutniStudent.kredit}}</span>
+                </div>
+				
             </div>
-        </form>  
+				 
+                 
         </div>
-        <div style="width: 50%; float: left;">
-        <predmet-list (predmetSelected)="predmetSelected($event)"></predmet-list>
-        </div>
+		<div>
+			<button [hidden] ="potvrda" (click) = "onPrijaviIspit()">Prijavi ispit</button> <span [hidden] = "warningHidden" class="alert alert-danger">{{poruka}}</span>
+                <div [hidden] = "!potvrda"> 
+                    <label >Da li ste sigurni?</label><br>
+                        <button (click)="onPotvrdi()">Potvrdi</button>
+                        <button (click) = "onOtkazi()">Otkaži</button>
+                </div>
+				
+		</div>
+    </form>  
+</div>
+<div style="width: 40%; float: left;">
+    <proba-prijave [rokId]="probaRokId" (predmetSelected)="predmetSelected($event)"></proba-prijave>
+</div>
+

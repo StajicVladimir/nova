@@ -11,6 +11,7 @@ import {PrijavaComponent} from './prijava/prijava.component';
 import {FutureTermsComponent} from './term/future-terms.component';
 import {FutureTermsDetailsComponent} from './term/future-terms-details.component';
 import {AllFutureTermsComponent} from './term/all-future-terms.component';
+import {ProbaPrijaveComponent} from './predmet/proba-prijave.component';
 
 @Component({
 	selector: 'my-app',
@@ -29,7 +30,7 @@ import {AllFutureTermsComponent} from './term/all-future-terms.component';
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Istorijat Rokova</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['FutureTerms']">Moji Budući Rokovi</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['AllFutureTerms']">Budući Rokovi</a>
-				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Prijava']">Prijava Ispita</a>
+				<!--<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Prijava']">Prijava Ispita</a>-->
 			</nav>
 		</header>
 		
@@ -68,7 +69,8 @@ import {AllFutureTermsComponent} from './term/all-future-terms.component';
 	{path : '/Prijava', name: 'Prijava', component: PrijavaComponent},
 	{path : '/FutureTerms', name: 'FutureTerms', component:FutureTermsComponent},
 	{path : '/AllFutureTerms', name: 'AllFutureTerms', component:AllFutureTermsComponent},
-	{path: '/FutureTermsDetails', name: 'FutureTermsDetails', component:FutureTermsDetailsComponent}
+	{path: '/FutureTermsDetails', name: 'FutureTermsDetails', component:FutureTermsDetailsComponent},
+	{path: '/PredmetiZaPrijavu', name: 'PredmetiZaPrijavu', component:ProbaPrijaveComponent}
 ])
 export class AppComponent
 {	

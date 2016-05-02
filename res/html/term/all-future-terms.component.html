@@ -1,0 +1,30 @@
+<h2 style="color :#269;">Spisak narednih rokova: </h2>
+        <div style =" width: 40%;float:right; margin:0% 20% 0% 0%">
+			<div style =" width: 80%; border-radius: 10px; background: #eee; border: 2px solid #369;padding: 0.5em;">
+				<span><h3>Detalji odabranog roka </h3></span>
+				<div>
+					<span style="font-weight:bold;">Naziv roka: </span>
+					<span>{{trenutniRokNaziv}}</span>
+				</div>    
+				<div>
+					<span style="font-weight:bold;">Datum početka: </span>
+					<span>{{trenutniRokPocetak}}</span>
+				</div>
+				<div>
+					<span style="font-weight:bold;">Naziv završetka: </span>
+					<span>{{trenutniRokZavrsetak}}</span>
+				</div>
+            
+			</div>
+				<button [disabled] = "termNotSelected"style="margin: 10px" (click) = "goToPrijava()">Prijavi ispit</button>
+				<span [hidden] = "!termNotSelected" class="alert alert-danger">Odaberite rok za prijavu</span>
+		</div>
+			<div style= "width: 60%;">
+				<ul >
+					<li *ngFor ="#term of terms" (click) = "onTermSelected(term)"> 
+						<span style = "font-weight:bold">{{term.naziv | uppercase}}: </span> 
+						{{term.datumPocetka}} {{term.datumZavrsetka}}
+					</li>
+				</ul>
+			</div>
+        

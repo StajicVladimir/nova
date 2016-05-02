@@ -15,6 +15,12 @@ li:hover{
     font-weight: bold;
     border-left: 3px solid #369;
 }
+li:active{
+    padding-left: 8px;
+    color: #369;
+    font-weight: bold;
+    border-left: 3px solid #369;
+}
 .clicked{
     color: #369;
     font-weight: bold;

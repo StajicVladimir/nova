@@ -2,8 +2,8 @@ import {Component, OnInit} from 'angular2/core';
 import {ControlGroup} from 'angular2/common';
 import {FormBuilder} from 'angular2/common';
 import {Validators} from 'angular2/common';
-
-
+import {Router,RouteParams} from 'angular2/router';
+ 
 import {Student} from '../student/student';
 import {StudentService} from '../student/student.service';
 
@@ -20,6 +20,7 @@ import {IspitService} from '../ispit/ispit.service';
 
 
 import {PredmetListComponent} from '../predmet/predmet-list.component';
+import {ProbaPrijaveComponent} from '../predmet/proba-prijave.component';
 
 @Component({
     selector:'prijava-component',
@@ -27,12 +28,18 @@ import {PredmetListComponent} from '../predmet/predmet-list.component';
     templateUrl :'res/html/prijava/prijava-component.html',
     styleUrls:['res/css/prijava.css'],
     providers: [StudentService,TermService, IspitService, PredmetService],
-    directives:[PredmetListComponent]
+    directives:[PredmetListComponent, ProbaPrijaveComponent]
     
 })
 export class PrijavaComponent implements OnInit{
     myForm :ControlGroup;
     active = true;
+    probaRokId : number=0;
+    probaRokNaziv: string ="";
+    probaRokPocetak:string ="";
+    probaRokZavrsetak:string ="";
+    
+    probaRok : Term = {id: 1, datumPocetka:null, datumZavrsetka:null, naziv:"ucitavam"};
     odsekid:number;
     trenutniPredmet: Predmet= {id:null, naziv:"odaberite", profesor:"ispit"};
     trenutniStudent:Student = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:0,kredit:0,pass:"pass", adresa: "adresa"};
@@ -48,7 +55,7 @@ export class PrijavaComponent implements OnInit{
     ime : string;
     constructor(private _formBuilder: FormBuilder, private _studentService: StudentService,
                     private _termService: TermService, private _ispitService: IspitService,
-                    private _predmetService: PredmetService){}
+                    private _predmetService: PredmetService,private _routeParams: RouteParams,private _router: Router){}
     
     public getStud(){
         this._studentService.getStudent().subscribe(
@@ -99,7 +106,7 @@ export class PrijavaComponent implements OnInit{
       onPotvrdi(){
           
           this._ispitService.putIspit(this.trenutniPredmet.id, 
-                    this.trenutniRok, 0, "2015-06-15").subscribe(
+                    this.probaRokId, 0, "2015-06-15").subscribe(
             data =>  this.ime = data,
             err => console.error(err),
             () => console.log('Uneo novi ispit')
@@ -107,34 +114,34 @@ export class PrijavaComponent implements OnInit{
             this.updateStudentKredit();
             this.potvrda=false;
             //Resetuje formu, kazu bice napravljen reset u nekoj novijoj verziji
-            this.active = false;
+            /*this.active = false;
             setTimeout(()=> this.active=true, 0);
             
             this.trenutniPredmet.id=null;
             this.trenutniPredmet.naziv="Odaberite predmet";
-            this.trenutniPredmet.profesor= "Odaberite predmet";    
+            this.trenutniPredmet.profesor= "Odaberite predmet";    */
+            this._router.navigate(['AllFutureTerms']);
       }
       
       onOtkazi(){
           this.potvrda=false;
           this.warningHidden = true;
+          /*
           this.active = false;
           setTimeout(()=> this.active=true, 0);
           this.trenutniPredmet.id=null;
           this.trenutniPredmet.naziv="Odaberite predmet";
           this.trenutniPredmet.profesor= "Odaberite predmet";
-          this.trenutniRok=0;
+          this.trenutniRok=0;*/
+          this._router.navigate(['AllFutureTerms']);
       }
       
       onPrijaviIspit(){
           this.poruka="";
           console.log('u prijavi ispit!'+ this.trenutniRok);
-          if(this.trenutniRok == null || this.trenutniRok == 0){
-              this.warningHidden = false;
-              this.poruka="Odaberite rok";
-          }
-          else 
-          {
+          
+          
+         
             if(this.trenutniStudent.kredit < 150){
                 this.warningHidden = false;
               this.poruka="Nemate dovoljno kredita za prijavu";
@@ -148,7 +155,7 @@ export class PrijavaComponent implements OnInit{
                     this.warningHidden = true;
                 }
              } 
-      }
+      
       
       predmetSelected(arg){
           let id = arg; 
@@ -165,6 +172,11 @@ export class PrijavaComponent implements OnInit{
           this.getStud();
            this.odsekid = this.trenutniStudent.odsek;
           this.getFutureTerms();
-         
+         /* this.probaRokId = +this._routeParams.get('rokId');
+            this.probaRokNaziv = this._routeParams.get('rokNaziv');*/
+            this.probaRokId = +this._routeParams.get('rokId');
+            this.probaRokNaziv=  this._routeParams.get('rokNaziv');
+            this.probaRokPocetak = this._routeParams.get('rokPocetak');
+            this.probaRokZavrsetak = this._routeParams.get('rokZavrsetak')
       }
 }
