@@ -16,7 +16,7 @@ import {GlobalVarsService} from '../global-vars.service'
             padding: 0;
         }
 
-        li{
+        li {
             cursor: pointer;
             transition: padding 0.3s;
         }
@@ -27,10 +27,11 @@ import {GlobalVarsService} from '../global-vars.service'
              font-weight: bold;
              border-left: 3px solid #369;
         }
-        .clicked{
+        clicked{
             color: #369;
              font-weight: bold;
         }
+        
     `],
     
     providers:[PredmetService]

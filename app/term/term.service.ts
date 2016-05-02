@@ -25,4 +25,8 @@ export class TermService{
          return this._http.get('http://ec2-52-28-138-105.eu-central-1.compute.amazonaws.com:8080/RESTfulProject/REST/WebService/buducirokovi/')
                     .map((res:Response) => res.json());
     }
+    getAllFutureTerms(){
+         return this._http.get('http://ec2-52-28-138-105.eu-central-1.compute.amazonaws.com:8080/RESTfulProject/REST/WebService/svibuducirokovi')
+                    .map((res:Response) => res.json());
+    }
 }

@@ -10,6 +10,7 @@ import {GlobalVarsService} from './global-vars.service';
 import {PrijavaComponent} from './prijava/prijava.component';
 import {FutureTermsComponent} from './term/future-terms.component';
 import {FutureTermsDetailsComponent} from './term/future-terms-details.component';
+import {AllFutureTermsComponent} from './term/all-future-terms.component';
 
 @Component({
 	selector: 'my-app',
@@ -26,7 +27,8 @@ import {FutureTermsDetailsComponent} from './term/future-terms-details.component
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Main Screen</a>
 				<!--<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>-->
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Istorijat Rokova</a>
-				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['FutureTerms']">Buduci Rokovi</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['FutureTerms']">Moji Budući Rokovi</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['AllFutureTerms']">Budući Rokovi</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Prijava']">Prijava Ispita</a>
 			</nav>
 		</header>
@@ -65,6 +67,7 @@ import {FutureTermsDetailsComponent} from './term/future-terms-details.component
 	{path : '/TermDetails', name: 'TermDetails', component: TermDetailsComponent},
 	{path : '/Prijava', name: 'Prijava', component: PrijavaComponent},
 	{path : '/FutureTerms', name: 'FutureTerms', component:FutureTermsComponent},
+	{path : '/AllFutureTerms', name: 'AllFutureTerms', component:AllFutureTermsComponent},
 	{path: '/FutureTermsDetails', name: 'FutureTermsDetails', component:FutureTermsDetailsComponent}
 ])
 export class AppComponent

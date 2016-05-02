@@ -10,6 +10,7 @@ export class GlobalVarsService{
     
     constructor(){
         this.loggedIn = false;
+        this.studentId=0;
         this.ulogovaniStudent = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:3,kredit:0, pass:"",adresa:"ulica"};
     }
     
