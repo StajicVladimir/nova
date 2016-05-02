@@ -52,19 +52,18 @@ export class LoginComponent {
     
       
     public check(){
-        
-        if (this.student.id == this.studentIndeks && this.student.pass == this.lozinka) {
-            
-            this._gVS.setLoggedIn(true);
-            console.log(this._gVS.getLoggedIn());
-            this._gVS.setStudentOdsek(this.student.odsek);
-            this._router.navigate(['Welcome']);
-        }else{
-            console.log("Ucitao ali async radi svoje, ne treba da sam ovde");
-            
-          
-        }
-        
+         if (this.student==null){
+                console.log('nepostojeci student');
+         }else{   
+            if (this.student.id == this.studentIndeks && this.student.pass == this.lozinka) {
+                this._gVS.setLoggedIn(true);
+                console.log(this._gVS.getLoggedIn());
+                this._gVS.setStudentOdsek(this.student.odsek);
+                this._router.navigate(['Welcome']);
+            }else{
+                console.log("Ucitao ali async radi svoje, ne treba da sam ovde");
+           }
+       } 
         
     }
     

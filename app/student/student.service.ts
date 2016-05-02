@@ -13,9 +13,9 @@ export class StudentService{
     headers:Headers;
   getStudent(){
         
-        this.urlString = this.urlString + this._gVS.getStudentId().toString();
+        let urlStringTmp= this.urlString + this._gVS.getStudentId().toString();
         //let url = this.urlString + this._gVS.getStudentId().toString();
-        return this._http.get(this.urlString)
+        return this._http.get(urlStringTmp)
         .map((res:Response) => res.json());
     }
     
