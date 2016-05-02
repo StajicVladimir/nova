@@ -25,7 +25,7 @@ import {ProbaPrijaveComponent} from './predmet/proba-prijave.component';
 				<a [hidden]= "_gVS.getLoggedIn()" [class.disabled]="_gVS.getLoggedIn()"[routerLink] = "['Login']" style ="float:right">Login</a>
 				<a [hidden]= "!_gVS.getLoggedIn()" style="margin-right: 5px;"[class.disabled]="!_gVS.getLoggedIn()" style ="float:right" 
 					(click)="onLogout()">Logout</a>
-				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Main Screen</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Moj Nalog</a>
 				<!--<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>-->
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Istorijat Rokova</a>
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['FutureTerms']">Pregled Prijavljenih Ispita</a>

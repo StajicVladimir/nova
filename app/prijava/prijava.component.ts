@@ -14,7 +14,7 @@ import {Predmet} from '../predmet/predmet';
 import {PredmetService} from '../predmet/predmet.service';
 
 import {IspitService} from '../ispit/ispit.service';
-
+import {GlobalVarsService} from '../global-vars.service';
 
 
 
@@ -33,58 +33,39 @@ import {ProbaPrijaveComponent} from '../predmet/proba-prijave.component';
 })
 export class PrijavaComponent implements OnInit{
     myForm :ControlGroup;
-    active = true;
+    
     probaRokId : number=0;
     probaRokNaziv: string ="";
     probaRokPocetak:string ="";
     probaRokZavrsetak:string ="";
     
-    probaRok : Term = {id: 1, datumPocetka:null, datumZavrsetka:null, naziv:"ucitavam"};
+    
     odsekid:number;
     trenutniPredmet: Predmet= {id:null, naziv:"odaberite", profesor:"ispit"};
     trenutniStudent:Student = { id:0, ime:"ime",prezime:"prezime", godinaStudija:0, odsek:0,kredit:0,pass:"pass", adresa: "adresa"};
-    trenutniRok : number =null;
-    public terms:Term[] =[{id: 1, datumPocetka:null, datumZavrsetka:null, naziv:"ucitavam"}];
+   
     public potvrda: boolean = false;
-    public rokNull :boolean = true;
+   
     public warningHidden : boolean = true;
     
-    public proba:number = 1;
+    
     poruka:string = "";
     
-    ime : string;
+    public ime:string;
     constructor(private _formBuilder: FormBuilder, private _studentService: StudentService,
                     private _termService: TermService, private _ispitService: IspitService,
-                    private _predmetService: PredmetService,private _routeParams: RouteParams,private _router: Router){}
+                    private _predmetService: PredmetService,private _routeParams: RouteParams,private _router: Router,
+                    private _gVS: GlobalVarsService){}
     
     public getStud(){
         this._studentService.getStudent().subscribe(
             data =>{this.trenutniStudent = data},
             err =>console.error(err),
-            ()=>console.log('ucitao studente')  
+            ()=>console.log('ucitao studenta')  
         );
-        this.odsekid = this.trenutniStudent.id;
+       // this.odsekid = this.trenutniStudent.odsek;
       }
-      
-      onTermSelect(id:number){
-          console.log(id);
-          this.trenutniRok = id;
-          this.warningHidden=true;
-      }
-      onTermChange(newValue){
-          console.log('new value' + newValue);
-          this.trenutniRok=newValue;
-          console.log('trenutni rok' + this.trenutniRok);
-      }
-      public getFutureTerms(){
-         
-            this._termService.getFutureTerms().subscribe(
-            data =>  this.terms = data,
-            err => console.error(err),
-            () => console.log('Ucitao buduce rokove')
-        );
-      }
-      
+     
       updateStudentKredit(){
           this.trenutniStudent.kredit = this.trenutniStudent.kredit - 150;
           this._studentService.postStudent(this.trenutniStudent.ime, 
@@ -95,14 +76,6 @@ export class PrijavaComponent implements OnInit{
             ); 
       }
       
-      checkWarningMessage(){
-          if (this.trenutniPredmet.id==null || this.trenutniRok==null ||this.trenutniRok == 0 || this.trenutniStudent.kredit<150){
-              this.warningHidden = false;
-          }else{
-              this.warningHidden=true;
-          }
-          
-      }
       onPotvrdi(){
           
           this._ispitService.putIspit(this.trenutniPredmet.id, 
@@ -113,35 +86,24 @@ export class PrijavaComponent implements OnInit{
             ); 
             this.updateStudentKredit();
             this.potvrda=false;
-            //Resetuje formu, kazu bice napravljen reset u nekoj novijoj verziji
-            /*this.active = false;
-            setTimeout(()=> this.active=true, 0);
             
-            this.trenutniPredmet.id=null;
-            this.trenutniPredmet.naziv="Odaberite predmet";
-            this.trenutniPredmet.profesor= "Odaberite predmet";    */
-            this._router.navigate(['AllFutureTerms']);
+            this._router.navigate(['FutureTerms']);
       }
       
       onOtkazi(){
           this.potvrda=false;
           this.warningHidden = true;
-          /*
-          this.active = false;
-          setTimeout(()=> this.active=true, 0);
-          this.trenutniPredmet.id=null;
-          this.trenutniPredmet.naziv="Odaberite predmet";
-          this.trenutniPredmet.profesor= "Odaberite predmet";
-          this.trenutniRok=0;*/
-          this._router.navigate(['AllFutureTerms']);
+         
+          this._router.navigate(['FutureTerms']); 
+      }
+      
+      onPovratak(){
+          this._router.navigate(['FutureTerms']);
       }
       
       onPrijaviIspit(){
           this.poruka="";
-          console.log('u prijavi ispit!'+ this.trenutniRok);
-          
-          
-         
+          console.log('u prijavi ispit!');
             if(this.trenutniStudent.kredit < 150){
                 this.warningHidden = false;
               this.poruka="Nemate dovoljno kredita za prijavu";
@@ -164,16 +126,13 @@ export class PrijavaComponent implements OnInit{
             err => console.error(err),
             () => console.log('Ucitao predmet')
           );
-          //this.checkWarningMessage();
+          
           this.warningHidden = true;
       }
       
       ngOnInit(){
           this.getStud();
            this.odsekid = this.trenutniStudent.odsek;
-          this.getFutureTerms();
-         /* this.probaRokId = +this._routeParams.get('rokId');
-            this.probaRokNaziv = this._routeParams.get('rokNaziv');*/
             this.probaRokId = +this._routeParams.get('rokId');
             this.probaRokNaziv=  this._routeParams.get('rokNaziv');
             this.probaRokPocetak = this._routeParams.get('rokPocetak');
