@@ -28,8 +28,8 @@ import {ProbaPrijaveComponent} from './predmet/proba-prijave.component';
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Welcome']">Main Screen</a>
 				<!--<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['History']">History</a>-->
 				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Terms']">Istorijat Rokova</a>
-				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['FutureTerms']">Moji Budući Rokovi</a>
-				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['AllFutureTerms']">Budući Rokovi</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['FutureTerms']">Pregled Prijavljenih Ispita</a>
+				<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['AllFutureTerms']">Prijava Ispita</a>
 				<!--<a [class.disabled]="!_gVS.getLoggedIn()" [routerLink] = "['Prijava']">Prijava Ispita</a>-->
 			</nav>
 		</header>

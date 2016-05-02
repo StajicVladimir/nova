@@ -22,6 +22,8 @@ export class IspitiRokComponent implements OnInit {
      public nijePolozen: string = "Nije položen"; 
     public exams :IspitRok[]=[{nazivPredmeta: "ucitavam", polozio:0,profesor:"ucitavam", datum:null}];
     selectedExam :IspitRok = null;
+    
+    public noExamsMessage = "Nema ispita";
     constructor(private _examService: IspitRokService){}
     
     public getExams(){
@@ -29,13 +31,15 @@ export class IspitiRokComponent implements OnInit {
         this._examService.getIspitRok(this.rokId).subscribe(
             data => { this.exams = data},
             err => console.error(err),
-            () => console.log('ucitao ispite')
+            () => console.log('Ucitao ispite')
         );
+        
     }
    onSelectExam(exam){
        this.selectedExam = exam;
    }
     ngOnInit(): any{
         this.getExams();
+        
     }
 }
