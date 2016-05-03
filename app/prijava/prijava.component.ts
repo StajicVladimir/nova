@@ -16,7 +16,7 @@ import {PredmetService} from '../predmet/predmet.service';
 import {IspitService} from '../ispit/ispit.service';
 import {GlobalVarsService} from '../global-vars.service';
 
-
+import {PrijavaDoneComponent} from './prijava-done.component';
 
 
 import {PredmetListComponent} from '../predmet/predmet-list.component';
@@ -28,7 +28,7 @@ import {ProbaPrijaveComponent} from '../predmet/proba-prijave.component';
     templateUrl :'res/html/prijava/prijava-component.html',
     styleUrls:['res/css/prijava.css'],
     providers: [StudentService,TermService, IspitService, PredmetService],
-    directives:[PredmetListComponent, ProbaPrijaveComponent]
+    directives:[PredmetListComponent, ProbaPrijaveComponent,PrijavaDoneComponent]
     
 })
 export class PrijavaComponent implements OnInit{
@@ -47,6 +47,7 @@ export class PrijavaComponent implements OnInit{
     public potvrda: boolean = false;
    
     public warningHidden : boolean = true;
+    public prijavaDoneHidden: boolean = true;
     
     
     poruka:string = "";
@@ -78,16 +79,16 @@ export class PrijavaComponent implements OnInit{
       
       onPotvrdi(){
           
-          this._ispitService.putIspit(this.trenutniPredmet.id, 
+          /*this._ispitService.putIspit(this.trenutniPredmet.id, 
                     this.probaRokId, 0, "2015-06-15").subscribe(
             data =>  this.ime = data,
             err => console.error(err),
             () => console.log('Uneo novi ispit')
             ); 
-            this.updateStudentKredit();
+            this.updateStudentKredit();*/
             this.potvrda=false;
-            
-            this._router.navigate(['AllFutureTerms']);
+            this.prijavaDoneHidden = false;
+            //this._router.navigate(['AllFutureTerms']);
       }
       
       onOtkazi(){
@@ -131,6 +132,9 @@ export class PrijavaComponent implements OnInit{
           this.potvrda=false;
       }
       
+      onPrijavaDoneClick(){
+          this._router.navigate(['AllFutureTerms']);
+      }
       ngOnInit(){
           this.getStud();
            this.odsekid = this.trenutniStudent.odsek;

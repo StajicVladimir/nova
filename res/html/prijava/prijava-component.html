@@ -2,7 +2,7 @@
 <div style="width: 60%; float: right;">
 	
 		
-		<div style="width : 100%; margin:10px 10px 0px 10px; " class="form-group">
+		<div [hidden] = "!prijavaDoneHidden" style="width : 100%; margin:10px 10px 0px 10px; " class="form-group">
 			<div style ="border-radius: 10px; background: #eee; border: 2px solid #369;padding: 0.5em;
                         float:right; margin:0% 40% 0% 0% ">
 				<span><h3>Vaša prijava:</h3></span>
@@ -27,17 +27,25 @@
                     <span>{{trenutniStudent.kredit}}</span>
                 </div>
 				
-            </div>
-				 
-                 
+            </div>  
         </div>
+        <div [hidden] = "prijavaDoneHidden" style="width : 100%; margin:10px 10px 0px 10px; " class="form-group">
+			<div style ="border-radius: 10px; background: #eee; border: 2px solid #369;padding: 0.5em;
+                        float:right; margin:0% 40% 0% 0% ">
+                    <prijava-done [ispit] ="trenutniPredmet.naziv" [rok] = "probaRokNaziv" 
+                    [kredit]="trenutniStudent.kredit"></prijava-done>
+                    
+            </div>
+            <button [hidden] = "prijavaDoneHidden" (click) = " onPrijavaDoneClick()"> Povratak na prijavu</button>
+        </div>
+        
 		<div style="  float:right; margin:0% 40% 0% 0%">
             <div>
-			    <button [hidden] ="potvrda" (click) = "onPrijaviIspit()">Prijavi ispit</button>
-                <button [hidden] ="potvrda" (click) = "onPovratak()">Povratak na prijavu</button>
+			    <button [hidden] ="potvrda || !prijavaDoneHidden " (click) = "onPrijaviIspit()">Prijavi ispit</button>
+                <button [hidden] ="potvrda || !prijavaDoneHidden" (click) = "onPovratak()">Povratak na prijavu</button>
             </div>
 							<span [hidden] = "warningHidden" class="alert alert-danger">{{poruka}}</span>
-                <div [hidden] = "!potvrda"> 
+                <div [hidden] = "!potvrda || !prijavaDoneHidden"> 
                     <!--<div><span>Da li ste sigurni?</span></div>-->
                     <div>
                         <span style="font-weight: bold">Da li ste sigurni?</span>
@@ -47,6 +55,7 @@
                 </div>
 				
 		</div>
+        
      
 </div>
 <div style="width: 40%; float: left;">
