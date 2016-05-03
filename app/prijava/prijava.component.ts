@@ -87,18 +87,18 @@ export class PrijavaComponent implements OnInit{
             this.updateStudentKredit();
             this.potvrda=false;
             
-            this._router.navigate(['FutureTerms']);
+            this._router.navigate(['AllFutureTerms']);
       }
       
       onOtkazi(){
           this.potvrda=false;
           this.warningHidden = true;
          
-          this._router.navigate(['FutureTerms']); 
+          this._router.navigate(['AllFutureTerms']); 
       }
       
       onPovratak(){
-          this._router.navigate(['FutureTerms']);
+          this._router.navigate(['AllFutureTerms']);
       }
       
       onPrijaviIspit(){
@@ -123,11 +123,12 @@ export class PrijavaComponent implements OnInit{
           let id = arg; 
           this._predmetService.getPredmet(id).subscribe(
             data =>  this.trenutniPredmet = data,
-            err => console.error(err),
+            err => console.error(err), 
             () => console.log('Ucitao predmet')
           );
           
           this.warningHidden = true;
+          this.potvrda=false;
       }
       
       ngOnInit(){
