@@ -21,7 +21,7 @@ export class IspitiRokComponent implements OnInit {
      public polozen: string = "Ocena: ";
      public nijePolozen: string = "Nije položen"; 
     public exams :IspitRok[]=[{nazivPredmeta: "ucitavam", polozio:0,profesor:"ucitavam", datum:null}];
-    selectedExam :IspitRok = null;
+    selectedExam :IspitRok = {nazivPredmeta: "ucitavam", polozio:0,profesor:"ucitavam", datum:null};
     
     public noExamsMessage = "Nema ispita";
     constructor(private _examService: IspitRokService){}

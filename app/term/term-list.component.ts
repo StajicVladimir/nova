@@ -1,7 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
 import {Term} from './term';
 import {TermService} from './term.service';
-import {IspitiRokComponent} from './ispiti-rok.component'
+//import {IspitiRokComponent} from './ispiti-rok.component'
 
 import {Router, RouteParams} from 'angular2/router';
 
@@ -9,13 +9,13 @@ import {Router, RouteParams} from 'angular2/router';
     selector: 'term-list',
     templateUrl:'res/html/term/term-list.component.html',
     styleUrls:['res/css/term.css'],
-    directives:[IspitiRokComponent],
+    //directives:[IspitiRokComponent],
     providers: [TermService]
 })
 export class TermListComponent implements OnInit{
     
     public terms:Term[] =[{id: 1, datumPocetka:null, datumZavrsetka:null,naziv:"ucitavam"}];
-    private selectedTerm :Term;
+    private selectedTerm :Term={id: 1, datumPocetka:null, datumZavrsetka:null,naziv:"ucitavam"};
     
     constructor(private _router:Router, private _routeParams: RouteParams, private _termService: TermService){}
     

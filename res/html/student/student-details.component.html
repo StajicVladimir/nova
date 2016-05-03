@@ -66,29 +66,38 @@
                                      </span>
                               </div>
                         </div>
+                        <div style= "width: 50%;  display: inline-block;float: right;">
+                                    <span style="width : 50%; margin:10px 10px 0px 50px; float: right;" [hidden]="(novaLozinka == novaLozinkaCheck || trenutnaLozinka != trenutniStudent.pass)" 
+                                           class="alert alert-danger">
+                                                Lozinke se ne podudaraju
+                                     </span>
+                         </div>
                         
                         <div style = "width:50%;">
                               <label for = "novaLozinka"> Unesite Novu Lozinku: </label>
                               <input  [disabled] = "!(trenutnaLozinka==trenutniStudent.pass)" 
-                                         class="form-control" type="text" id="novaLozinka"
+                                         class="form-control" type="password" id="novaLozinka"
                                          ngControl = "novaLozinka"
                                       [(ngModel)]="novaLozinka" required>
                          </div>
+                         
                         
                          <div style = "width:50%;">
                               <label for = "novaLozinkaCheck"> Potvrdite lozinku: </label>
                               <input [disabled] = "!(trenutnaLozinka==trenutniStudent.pass)"
-                                     class="form-control" type="text" id="novaLozinkaCheck"
+                                     class="form-control" type="password" id="novaLozinkaCheck"
                                      ngControl = "novaLozinkaCheck"
                                     [(ngModel)]="novaLozinkaCheck"  required>  
                         </div>
                   </div>
+                  <div style="margin: 10px 0 0 0">
                   <button [disabled] = "!(novaLozinka==novaLozinkaCheck) || 
                                         !(trenutnaLozinka == trenutniStudent.pass)
                                        || !myFormPass.valid"
                                           (click)= "onPromeniPass()">Promeni</button>
                   <button (click) ="onOdustaniPass()">Odustani</button>
                   <span [hidden] = "(novaLozinka == novaLozinkaCheck)"> Lozinke nisu iste</span>
+                  </div>
                   </form>
                   
                    

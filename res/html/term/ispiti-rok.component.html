@@ -1,5 +1,9 @@
 <div> <h2>Spisak ispita za odabrani rok:</h2></div>
-        <div style="width : 40%; display: inline-block; float: left;" >
+        
+        <div style = "width : 60%; display: inline-block;float : right">
+            <ispiti-rok-details *ngIf = "selectedExam !== null" [exam] = "selectedExam" ></ispiti-rok-details>
+      </div>        
+        <div style="width : 40%" >
        <ul >
             <li *ngFor ="#exam of exams"
                 (click) = "onSelectExam(exam)">
@@ -15,7 +19,5 @@
        </ul>
        </div>
        
-      <!--<div style = "width : 70%;height: 500px display: inline-block;">--> 
-            <ispiti-rok-details *ngIf = "selectedExam !== null" [exam] = "selectedExam" ></ispiti-rok-details>
-      <!--</div>-->             
+      
       
