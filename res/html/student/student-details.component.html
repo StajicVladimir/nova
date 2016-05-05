@@ -32,20 +32,22 @@
                  <div style="width : 250px;">
                        <label for = "ime"> Unesite ime: </label>
                        <input class="form-control" type="text" id="ime" 
-                        ngControl="ime" [(ngModel)]="trenutniStudent.ime" #ime = "ngForm">
+                        ngControl="ime" [(ngModel)]="trenutniStudent.ime" #ime = "ngForm" required>
                   </div>  
                   <div style="width : 250px;">
                     <label for = "prezime"> Unesite prezime: </label>
                     <input class="form-control" type="text" id="prezime" 
-                         ngControl="prezime" [(ngModel)]="trenutniStudent.prezime" #prezime = "ngForm">
+                         ngControl="prezime" [(ngModel)]="trenutniStudent.prezime" #prezime = "ngForm" required>
                    </div>
                    <div style="width : 250px;">
                      <label for = "adresa"> Unesite adresu: </label>
                      <input class="form-control" type="text" id="adresa" 
-                      ngControl="adresa" [(ngModel)]="trenutniStudent.adresa" #adresa = "ngForm">
+                      ngControl="adresa" [(ngModel)]="trenutniStudent.adresa" #adresa = "ngForm" required>
                 </div> 
-                <button (click)= "onPromeni()">Promeni</button>
-                <button (click) ="onOdustaniPodatci()">Odustani</button>
+                <div style="margin : 10px 0 0 0">
+                  <button [disabled] = "!myForm.valid" (click)= "onPromeni()">Promeni</button>
+                  <button (click) ="onOdustaniPodatci()">Odustani</button>
+                </div>
            </form>
            
             <!-- *********** Promena Lozinke [(ngModel)]="trenutniStudent.pass"************-->    
@@ -60,14 +62,16 @@
                                      [(ngModel)]="trenutnaLozinka" required>
                                </div>
                                 <div style= "width: 50%;  display: inline-block;float: right;">
-                                    <span style="width : 50%; margin:10px 10px 0px 50px; float: right;" [hidden]="trenutnaLozinka == trenutniStudent.pass || changePassHidden" 
+                                    <span style="width : 50%; margin:10px 10px 0px 50px; float: right;"
+                                     [hidden]="trenutnaLozinka == trenutniStudent.pass || changePassHidden" 
                                            class="alert alert-danger">
                                                 Obavezno uneti lozinku
                                      </span>
                               </div>
                         </div>
                         <div style= "width: 50%;  display: inline-block;float: right;">
-                                    <span style="width : 50%; margin:10px 10px 0px 50px; float: right;" [hidden]="(novaLozinka == novaLozinkaCheck || trenutnaLozinka != trenutniStudent.pass)" 
+                                    <span style="width : 50%; margin:10px 10px 0px 50px; float: right;" 
+                                    [hidden]="(novaLozinka == novaLozinkaCheck || trenutnaLozinka != trenutniStudent.pass)" 
                                            class="alert alert-danger">
                                                 Lozinke se ne podudaraju
                                      </span>
@@ -96,7 +100,7 @@
                                        || !myFormPass.valid"
                                           (click)= "onPromeniPass()">Promeni</button>
                   <button (click) ="onOdustaniPass()">Odustani</button>
-                  <span [hidden] = "(novaLozinka == novaLozinkaCheck)"> Lozinke nisu iste</span>
+                  
                   </div>
                   </form>
                   

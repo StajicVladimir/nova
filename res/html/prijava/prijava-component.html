@@ -39,6 +39,15 @@
             <button [hidden] = "prijavaDoneHidden" (click) = " onPrijavaDoneClick()"> Povratak na prijavu</button>
         </div>
         
+    <!-- <div [hidden] = "!predmetNotSelected" style="width : 100%; margin:10px 10px 0px 10px; " class="form-group">
+			<div style ="border-radius: 10px; background: #eee; border: 2px solid #369;padding: 0.5em;
+                        float:right; margin:0% 40% 0% 0% ">
+                   <span>Odaberite predmet iz liste da započnete prijavu</span>
+                    
+            </div>
+            
+        </div>-->
+        
 		<div style="  float:right; margin:0% 40% 0% 0%">
             <div>
 			    <button [hidden] ="potvrda || !prijavaDoneHidden " (click) = "onPrijaviIspit()">Prijavi ispit</button>

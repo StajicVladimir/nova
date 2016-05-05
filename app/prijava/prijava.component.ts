@@ -48,7 +48,7 @@ export class PrijavaComponent implements OnInit{
    
     public warningHidden : boolean = true;
     public prijavaDoneHidden: boolean = true;
-    
+    public predmetNotSelected: boolean = true;
     
     poruka:string = "";
     
@@ -79,13 +79,13 @@ export class PrijavaComponent implements OnInit{
       
       onPotvrdi(){
           
-          /*this._ispitService.putIspit(this.trenutniPredmet.id, 
+          this._ispitService.putIspit(this.trenutniPredmet.id, 
                     this.probaRokId, 0, "2015-06-15").subscribe(
             data =>  this.ime = data,
             err => console.error(err),
             () => console.log('Uneo novi ispit')
             ); 
-            this.updateStudentKredit();*/
+            this.updateStudentKredit();
             this.potvrda=false;
             this.prijavaDoneHidden = false;
             //this._router.navigate(['AllFutureTerms']);
@@ -130,6 +130,7 @@ export class PrijavaComponent implements OnInit{
           
           this.warningHidden = true;
           this.potvrda=false;
+          this.predmetNotSelected = false;
       }
       
       onPrijavaDoneClick(){

@@ -1,4 +1,5 @@
- <div style="width=100%;margin: 0 40% 0 0; border-radius: 10px; background: #eee; border: 2px solid #369; padding: 20px;" >
+ <div [hidden] = "exam.nazivPredmeta == 'ucitavam'"
+        style="width=100%;margin: 0 40% 0 0; min-height :100px;border-radius: 10px; background: #eee; border: 2px solid #369; padding: 20px;" >
             <div>
                 <span style= "display:inline-block; width:35%;font-weight:bold">Ispit:</span>
                 <span style ="display:inline-block; width:65%; float:right;">{{exam.nazivPredmeta}}</span>
@@ -12,3 +13,7 @@
                 <span style ="display:inline-block; width:65%; float:right;">{{exam.polozio<6? ocena : exam.polozio}}</span>
             </div>
         </div>
+        
+<div [hidden] = "exam.nazivPredmeta != 'ucitavam'"style="width=100%;margin: 0 40% 0 0; min-height:100px;border-radius: 10px; background: #eee; border: 2px solid #369; padding: 20px;" >
+    <span>Odaberite predmet iz liste za detalje</span>
+</div>

@@ -14,7 +14,7 @@ import {Router, RouteParams} from 'angular2/router';
             <span>{{rok}}</span>
         </div>
         
-        vaš kredit je umanjen za 150rsd i sada iznosi <span style="font-weight: bold">{{kredit}}</span>
+        kredit je umanjen za 150rsd i sada iznosi <span style="font-weight: bold">{{kredit}}</span>
     `,
 })
 
